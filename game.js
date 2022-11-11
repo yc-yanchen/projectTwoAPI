@@ -28,9 +28,13 @@ async function getQuestion() {
     console.log(triviaApp.questionArray);
 
     // Call the displayQuestion function
+    triviaApp.setupQuestion();
+}
+
+triviaApp.setupQuestion = () => {
     triviaApp.displayQuestion();
     triviaApp.displayChoice();
-}
+};
 
 // Function to display the questions inside the questionArray
 triviaApp.displayQuestion = () => {
@@ -45,16 +49,25 @@ triviaApp.displayQuestion = () => {
 // Function to display the choices
 triviaApp.displayChoice = () => {
     triviaApp.choiceArray = [];
-    console.log(triviaApp.questionArray[0][0].incorrectAnswers);
+    // console.log(triviaApp.questionArray[0][0].incorrectAnswers);
     triviaApp.questionArray[0][0].incorrectAnswers.forEach((answer) => {
-        triviaApp.choiceArray.push(answer)
+        triviaApp.choiceArray.push(answer);
     });
-    triviaApp.choiceArray.push(triviaApp.questionArray[0][0].correctAnswer)
-    console.log(triviaApp.choiceArray);
-  
+    triviaApp.choiceArray.push(triviaApp.questionArray[0][0].correctAnswer);
 
-    
-    
+    console.log(triviaApp.choiceArray);
+
+    triviaApp.fisherYates(triviaApp.choiceArray);
+
+    console.log(triviaApp.choiceArray);
 };
+
+// Fisher Yates algorithm (Research source: https://javascript.info/task/shuffle)
+triviaApp.fisherYates = function (array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+    }
+};
+
 // Call the initialization function
 triviaApp.init();
