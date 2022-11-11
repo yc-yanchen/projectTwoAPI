@@ -55,17 +55,28 @@ triviaApp.displayChoice = () => {
     });
     triviaApp.choiceArray.push(triviaApp.questionArray[0][0].correctAnswer);
 
-    console.log(triviaApp.choiceArray);
-
+    // Shuffled the choice array
     triviaApp.fisherYates(triviaApp.choiceArray);
 
-    console.log(triviaApp.choiceArray);
+    // Create a ul object to store a list of buttons which holds the value of the answers
+    const ulElement = document.createElement("ul");
+    ulElement.classList = "choiceContainer";
+
+    // For each item in the shuffled choice array:
+    for (let i = 0; i < triviaApp.choiceArray.length; i++) {
+        // For each item in the array, create a new li element
+        const liElement = document.createElement("li");
+        liElement.id = `choice${i}`;
+        liElement.innerText = triviaApp.choiceArray[i];
+        document.querySelector(".content").append(liElement);
+    }
 };
 
 // Fisher Yates algorithm (Research source: https://javascript.info/task/shuffle)
 triviaApp.fisherYates = function (array) {
     for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
 };
 
