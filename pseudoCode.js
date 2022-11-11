@@ -1,42 +1,23 @@
-//----------------Phase 1 ----------------//
-//----------------Pseudo Code to Display Game Assets----------------//
+// Phase 1: Retrieving data from API
+// Get browser to fetch the data from the queried url
+// Parse the data
 
-// Fetch data from (https://restcountries.com/#rest-countries)
-// Parse data to a useable format
-// Create new elements:
-//HTML element to display the flag (could be img/p because flag is retrieved as an icon)
-//HTML elements to display the choices
-// innerHTML/ innerText will be used to modify the newly created elements
-// append the elements to the page
-// the data only needs to be fetched once, the code will continue to reuse the object so there is no need to acquire again
+// Contain bellow in a for(let i = 0; i < questionDatabase.length; i++) so that it would loop the code bellow
 
-//----------------Phase 2----------------//
-//----------------Pseudo Code for Game Logic----------------//
+// Phase 2: Display the question
+// Create a new element p or h
+// Use innerhtml to added text (Data from array contains characters which can only be displayed when innerhtml is used)
+// Append the element
 
-// Acquiring the correct answer:
-// Create a random number generator with the maximum number being the length of the data array
-// The random number will be used to access the data array and the country name and country flag will be store in a correct answer variable
+// Phase 3: Merge the correct and incorrect answer into a single array
+// Collect data from the incorrect_answers array and correct_answer array and push them into a singular array choiceArray
+// Use the Fisher Yates algorithm to shuffle the array
 
-// Acquiring the inccorect answers
-// randomNumber = () => {
-// generate random number here and store into newNumber
-// if(newNumber == previouslyAcquiredNumber) {
-// randomNumber()
-//     }
-// }
-
-// Loop it additional 3 times while using logic to prevent the same number from being generated
-
-//----------------Phase 3----------------//
-//----------------Pseudo Code for Answer Check----------------//
-
-// when user mouse over / click, use css transition to provide animation
-// addEventListener to detect user selection
-// Compare the user choice value with the answer value,
-// if true, correct! use empty string to erase all the choices and display correct!
-// if inccorect, use empty string to erase all the choices and display the correct answer?
-
-//----------------Phase 4----------------//
-//----------------Pseudo Code for Game Logic----------------//
-
-// rerun the code starting from phase 1
+// Phase 4: Use a for(let i = 0; i < choiceArray.length; i++) to display the choices
+// Create a button
+// Add value to it from the choice array
+// Add id to it using the variable i so that each button has a different ID
+// Append the element
+// Create addeventlistener to each ID
+//      Runs a function which checks whether the button value is the same as the correct answer
+// Use an empty string to wipe the choices, then display whether the user is correct or not
