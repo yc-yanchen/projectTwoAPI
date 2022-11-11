@@ -29,6 +29,7 @@ async function getQuestion() {
 
     // Call the displayQuestion function
     triviaApp.displayQuestion();
+    triviaApp.displayChoice();
 }
 
 // Function to display the questions inside the questionArray
@@ -41,5 +42,19 @@ triviaApp.displayQuestion = () => {
     document.querySelector(".content").append(questionElement);
 };
 
+// Function to display the choices
+triviaApp.displayChoice = () => {
+    triviaApp.choiceArray = [];
+    console.log(triviaApp.questionArray[0][0].incorrectAnswers);
+    triviaApp.questionArray[0][0].incorrectAnswers.forEach((answer) => {
+        triviaApp.choiceArray.push(answer)
+    });
+    triviaApp.choiceArray.push(triviaApp.questionArray[0][0].correctAnswer)
+    console.log(triviaApp.choiceArray);
+  
+
+    
+    
+};
 // Call the initialization function
 triviaApp.init();
