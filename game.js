@@ -1,17 +1,21 @@
 const triviaApp = {};
 
-triviaApp.url = new URL("https://the-trivia-api.com/api/questions");
 
-triviaApp.init = () => {
+triviaApp.init = function () {
     getQuestion();
 };
 
-triviaApp.url.search = new URLSearchParams({
-    amount: 10,
-    difficulty: "easy",
-});
-
+// Array to store the questions
 triviaApp.questionArray = [];
+
+triviaApp.url = new URL("https://the-trivia-api.com/api/questions");
+
+// Search query for the setting of the game 
+triviaApp.url.search = new URLSearchParams({
+    limit: 10,
+    difficulty: "easy",
+});s
+
 
 async function getQuestion() {
     const myObject = await fetch(triviaApp.url);
@@ -22,7 +26,7 @@ async function getQuestion() {
 
 triviaApp.displayQuestion = () => {
     const questionElement = document.createElement("h2");
-    // questionElement.innerHTML = triviaApp.questionArray[0][0].question;
+    questionElement.innerHTML = triviaApp.questionArray[0][0].question;
     // console.log(triviaApp.questionArray);
 };
 
