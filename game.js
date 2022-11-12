@@ -34,6 +34,7 @@ async function getQuestion() {
 triviaApp.setupQuestion = () => {
     triviaApp.displayQuestion();
     triviaApp.displayChoice();
+    triviaApp.updateScore();
 };
 
 // Function to display the questions inside the questionArray
@@ -62,35 +63,57 @@ triviaApp.displayChoice = () => {
     for (let i = 0; i < triviaApp.choiceArray.length; i++) {
         // For each item in the array, create a new li element
         const liElement = document.createElement("li");
-        liElement.id = `choiceList${i}`;
-        liElement.classList = "listStyling";
-
-        document.querySelector(".choiceContainer").append(liElement);
         const pElement = document.createElement("p");
         pElement.innerText = triviaApp.choiceArray[i];
         pElement.id = `choice${i}`;
-        pElement.classList = "textChoice";
-        document.querySelector(`#choiceList${i}`).append(pElement);
+        pElement.classList = "choiceText";
+        liElement.classList = "choiceList";
+        liElement.id = `choiceList${i}`;
+        liElement.append(pElement);
+        document.querySelector(".choiceContainer").append(liElement);
 
+        // Attach event listener
         document.querySelector(`#choiceList${i}`).addEventListener("click", function (event) {
+            // Clear the choices
             triviaApp.clearChoice();
+            // Create li Element to store paragraph element
             const liEvaluation = document.createElement("li");
-            liEvaluation.classList = "liEvaluationStyling";
+            // Assign it a class to style
+            liEvaluation.classList = "choiceEvaluation";
+            // Append the li to the ul
             document.querySelector(".choiceContainer").append(liEvaluation);
-            const pEvaluation = document.querySelector("p");
-            pEvaluation.classList = "textChoice";
-            document.querySelector(".liEvaluationStyling");
-
+            // Create a p Element to display the evaluatino
+            const pEvaluation = document.createElement("p");
+            // Assign it a class to style
+            pEvaluation.classList = "choiceText";
+            // Append the p to the li
+            liEvaluation.append(pEvaluation);
             if (event.target.textContent == triviaApp.questionArray[0][triviaApp.questionCounter].correctAnswer) {
-                pEvaluation.innerText = "Correct";
+                pEvaluation.innerText = `Correct! \n Click here to continue`;
+                triviaApp.score++;
+                triviaApp.updateScore();
             } else {
-                pEvaluation.innerText = "Incorrect";
+                pEvaluation.innerText = `The correct answer is: \n ${triviaApp.questionArray[0][triviaApp.questionCounter].correctAnswer} \n Click here to continue`;
             }
-
-            liEvaluation.addEventListener("click", console.log("hello"));
+            // Add an event listener to the new li element to run the function triviaApp.nextQuestion()
+            liEvaluation.addEventListener("click", function () {
+                triviaApp.nextQuestion();
+            });
         });
     }
 };
+
+triviaApp.updateScore = () => {
+    triviaApp.clearScore();
+    const scoreElement = document.createElement("p");
+    scoreElement.classList = "scoreText";
+    scoreElement.innerHTML =`${triviaApp.score}`;
+    document.querySelector(".scoreContainer").append(scoreElement);
+
+};
+
+// Counter to keep the score
+triviaApp.score = 0;
 
 // Counter to keep track of the number of itterations
 triviaApp.questionCounter = 0;
@@ -99,6 +122,11 @@ triviaApp.nextQuestion = () => {
     triviaApp.clearAll();
     triviaApp.questionCounter++;
     triviaApp.setupQuestion();
+};
+
+// Clear score
+triviaApp.clearScore = () => {
+    document.querySelector(".scoreContainer").innerHTML = "";
 };
 
 // Clear choices
