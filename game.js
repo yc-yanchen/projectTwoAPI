@@ -62,32 +62,33 @@ triviaApp.displayChoice = () => {
     for (let i = 0; i < triviaApp.choiceArray.length; i++) {
         // For each item in the array, create a new li element
         const liElement = document.createElement("li");
+        const pElement = document.createElement("p");
         liElement.id = `choiceList${i}`;
         liElement.classList = "listStyling";
-
-        document.querySelector(".choiceContainer").append(liElement);
-        const pElement = document.createElement("p");
         pElement.innerText = triviaApp.choiceArray[i];
         pElement.id = `choice${i}`;
         pElement.classList = "textChoice";
-        document.querySelector(`#choiceList${i}`).append(pElement);
+        liElement.append(pElement);
+        document.querySelector(".choiceContainer").append(liElement);
 
         document.querySelector(`#choiceList${i}`).addEventListener("click", function (event) {
             triviaApp.clearChoice();
             const liEvaluation = document.createElement("li");
-            liEvaluation.classList = "liEvaluationStyling";
-            document.querySelector(".choiceContainer").append(liEvaluation);
             const pEvaluation = document.querySelector("p");
+            liEvaluation.classList = "liEvaluationStyling";
             pEvaluation.classList = "textChoice";
-            document.querySelector(".liEvaluationStyling");
+            document.querySelector(".choiceContainer").append(liEvaluation);
 
+            liEvaluation.append(pEvaluation);
             if (event.target.textContent == triviaApp.questionArray[0][triviaApp.questionCounter].correctAnswer) {
                 pEvaluation.innerText = "Correct";
             } else {
                 pEvaluation.innerText = "Incorrect";
             }
 
-            liEvaluation.addEventListener("click", console.log("hello"));
+            liEvaluation.addEventListener("click", function (event) {
+                triviaApp.nextQuestion();
+            });
         });
     }
 };
