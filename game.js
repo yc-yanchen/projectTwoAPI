@@ -80,7 +80,12 @@ triviaApp.displayChoice = () => {
             const pEvaluation = document.querySelector("p");
             pEvaluation.classList = "textChoice";
             document.querySelector(".liEvaluationStyling");
-            pEvaluation.innerHTML = "hello";
+
+            if (event.target.textContent == triviaApp.questionArray[0][0].correctAnswer) {
+                pEvaluation.innerText = "Correct";
+            } else {
+                pEvaluation.innerText = "Incorrect";
+            }
         });
     }
 };
