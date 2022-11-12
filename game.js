@@ -64,11 +64,19 @@ triviaApp.displayChoice = () => {
         // For each item in the array, create a new li element
         const liElement = document.createElement("li");
         const pElement = document.createElement("p");
+<<<<<<< HEAD
         pElement.innerText = triviaApp.choiceArray[i];
         pElement.id = `choice${i}`;
         pElement.classList = "choiceText";
         liElement.classList = "choiceList";
         liElement.id = `choiceList${i}`;
+=======
+        liElement.id = `choiceList${i}`;
+        liElement.classList = "listStyling";
+        pElement.innerText = triviaApp.choiceArray[i];
+        pElement.id = `choice${i}`;
+        pElement.classList = "textChoice";
+>>>>>>> 1b2157b15b863df4696d2b2719fa92834011d075
         liElement.append(pElement);
         document.querySelector(".choiceContainer").append(liElement);
 
@@ -78,6 +86,7 @@ triviaApp.displayChoice = () => {
             triviaApp.clearChoice();
             // Create li Element to store paragraph element
             const liEvaluation = document.createElement("li");
+<<<<<<< HEAD
             // Assign it a class to style
             liEvaluation.classList = "choiceEvaluation";
             // Append the li to the ul
@@ -87,6 +96,13 @@ triviaApp.displayChoice = () => {
             // Assign it a class to style
             pEvaluation.classList = "choiceText";
             // Append the p to the li
+=======
+            const pEvaluation = document.querySelector("p");
+            liEvaluation.classList = "liEvaluationStyling";
+            pEvaluation.classList = "textChoice";
+            document.querySelector(".choiceContainer").append(liEvaluation);
+
+>>>>>>> 1b2157b15b863df4696d2b2719fa92834011d075
             liEvaluation.append(pEvaluation);
             if (event.target.textContent == triviaApp.questionArray[0][triviaApp.questionCounter].correctAnswer) {
                 pEvaluation.innerText = `Correct! \n Click here to continue`;
@@ -95,8 +111,13 @@ triviaApp.displayChoice = () => {
             } else {
                 pEvaluation.innerText = `The correct answer is: \n ${triviaApp.questionArray[0][triviaApp.questionCounter].correctAnswer} \n Click here to continue`;
             }
+<<<<<<< HEAD
             // Add an event listener to the new li element to run the function triviaApp.nextQuestion()
             liEvaluation.addEventListener("click", function () {
+=======
+
+            liEvaluation.addEventListener("click", function (event) {
+>>>>>>> 1b2157b15b863df4696d2b2719fa92834011d075
                 triviaApp.nextQuestion();
             });
         });
