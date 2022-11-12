@@ -57,7 +57,6 @@ triviaApp.displayChoice = () => {
 
     // Shuffled the choice array
     triviaApp.fisherYates(triviaApp.choiceArray);
-   
 
     // For each item in the shuffled choice array:
     for (let i = 0; i < triviaApp.choiceArray.length; i++) {
@@ -65,16 +64,30 @@ triviaApp.displayChoice = () => {
         const liElement = document.createElement("li");
         liElement.id = `choiceList${i}`;
         liElement.classList = "listStyling";
-        
-        document.querySelector(".questionContainer").append(liElement);
+
+        document.querySelector(".choiceContainer").append(liElement);
         const pElement = document.createElement("p");
         pElement.innerText = triviaApp.choiceArray[i];
         pElement.id = `choice${i}`;
         pElement.classList = "textChoice";
         document.querySelector(`#choiceList${i}`).append(pElement);
-        
 
+        document.querySelector(`#choiceList${i}`).addEventListener("click", function (event) {
+            triviaApp.clearChoice();
+            const liEvaluation = document.createElement("li");
+            liEvaluation.classList = "liEvaluationStyling";
+            document.querySelector(".choiceContainer").append(liEvaluation);
+            const pEvaluation = document.querySelector("p");
+            pEvaluation.classList = "textChoice";
+            document.querySelector(".liEvaluationStyling");
+            pEvaluation.innerHTML = "hello";
+        });
     }
+};
+
+// Clear choices
+triviaApp.clearChoice = () => {
+    document.querySelector(".choiceContainer").innerHTML = "";
 };
 
 // Fisher Yates algorithm (Research source: https://javascript.info/task/shuffle)
@@ -84,8 +97,6 @@ triviaApp.fisherYates = function (array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 };
-
-
 
 // Call the initialization function
 triviaApp.init();
