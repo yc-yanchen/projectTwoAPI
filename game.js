@@ -41,7 +41,7 @@ triviaApp.displayQuestion = () => {
     // Create an h2 object in the document
     const questionElement = document.createElement("h2");
     // Adding text content to the h2
-    questionElement.innerHTML = triviaApp.questionArray[0][0].question;
+    questionElement.innerHTML = triviaApp.questionArray[0][triviaApp.questionCounter].question;
     // Appending the h2 object to the page of the html
     document.querySelector(".questionContainer").append(questionElement);
 };
@@ -50,10 +50,10 @@ triviaApp.displayQuestion = () => {
 triviaApp.displayChoice = () => {
     triviaApp.choiceArray = [];
     // console.log(triviaApp.questionArray[0][0].incorrectAnswers);
-    triviaApp.questionArray[0][0].incorrectAnswers.forEach((answer) => {
+    triviaApp.questionArray[0][triviaApp.questionCounter].incorrectAnswers.forEach((answer) => {
         triviaApp.choiceArray.push(answer);
     });
-    triviaApp.choiceArray.push(triviaApp.questionArray[0][0].correctAnswer);
+    triviaApp.choiceArray.push(triviaApp.questionArray[0][triviaApp.questionCounter].correctAnswer);
 
     // Shuffled the choice array
     triviaApp.fisherYates(triviaApp.choiceArray);
@@ -81,18 +81,40 @@ triviaApp.displayChoice = () => {
             pEvaluation.classList = "textChoice";
             document.querySelector(".liEvaluationStyling");
 
-            if (event.target.textContent == triviaApp.questionArray[0][0].correctAnswer) {
+            if (event.target.textContent == triviaApp.questionArray[0][triviaApp.questionCounter].correctAnswer) {
                 pEvaluation.innerText = "Correct";
             } else {
                 pEvaluation.innerText = "Incorrect";
             }
+
+            liEvaluation.addEventListener("click", console.log("hello"));
         });
     }
+};
+
+// Counter to keep track of the number of itterations
+triviaApp.questionCounter = 0;
+
+triviaApp.nextQuestion = () => {
+    triviaApp.clearAll();
+    triviaApp.questionCounter++;
+    triviaApp.setupQuestion();
 };
 
 // Clear choices
 triviaApp.clearChoice = () => {
     document.querySelector(".choiceContainer").innerHTML = "";
+};
+
+// Clear questions
+triviaApp.clearQuestion = () => {
+    document.querySelector(".questionContainer").innerHTML = "";
+};
+
+// Clear all
+triviaApp.clearAll = () => {
+    triviaApp.clearChoice();
+    triviaApp.clearQuestion();
 };
 
 // Fisher Yates algorithm (Research source: https://javascript.info/task/shuffle)
