@@ -43,7 +43,7 @@ triviaApp.displayQuestion = () => {
     // Adding text content to the h2
     questionElement.innerHTML = triviaApp.questionArray[0][0].question;
     // Appending the h2 object to the page of the html
-    document.querySelector(".content").append(questionElement);
+    document.querySelector(".questionContainer").append(questionElement);
 };
 
 // Function to display the choices
@@ -57,18 +57,23 @@ triviaApp.displayChoice = () => {
 
     // Shuffled the choice array
     triviaApp.fisherYates(triviaApp.choiceArray);
-
-    // Create a ul object to store a list of buttons which holds the value of the answers
-    const ulElement = document.createElement("ul");
-    ulElement.classList = "choiceContainer";
+   
 
     // For each item in the shuffled choice array:
     for (let i = 0; i < triviaApp.choiceArray.length; i++) {
         // For each item in the array, create a new li element
         const liElement = document.createElement("li");
-        liElement.id = `choice${i}`;
-        liElement.innerText = triviaApp.choiceArray[i];
-        document.querySelector(".content").append(liElement);
+        liElement.id = `choiceList${i}`;
+        liElement.classList = "listStyling";
+        
+        document.querySelector(".questionContainer").append(liElement);
+        const pElement = document.createElement("p");
+        pElement.innerText = triviaApp.choiceArray[i];
+        pElement.id = `choice${i}`;
+        pElement.classList = "textChoice";
+        document.querySelector(`#choiceList${i}`).append(pElement);
+        
+
     }
 };
 
@@ -79,6 +84,8 @@ triviaApp.fisherYates = function (array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 };
+
+
 
 // Call the initialization function
 triviaApp.init();
