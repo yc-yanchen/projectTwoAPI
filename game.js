@@ -31,6 +31,7 @@ async function getQuestion() {
     triviaApp.setupQuestion();
 }
 
+// Function to run through all game setup related functions
 triviaApp.setupQuestion = () => {
     triviaApp.displayQuestion();
     triviaApp.displayChoice();
@@ -63,12 +64,19 @@ triviaApp.displayChoice = () => {
     for (let i = 0; i < triviaApp.choiceArray.length; i++) {
         // For each item in the array, create a new li element
         const liElement = document.createElement("li");
+        // For each item in the array, create a new p element
         const pElement = document.createElement("p");
+        // Modify the innerText property of pElement to the value at the corresponding index number in the array
         pElement.innerText = triviaApp.choiceArray[i];
+        // Modify the id property of the pElement. Assigns a unique id based on the counter i
         pElement.id = `choice${i}`;
+        // Modify the class property of the pElement
         pElement.classList = "choiceText";
+        // Modify the class property of the class list
         liElement.classList = "choiceList";
+        // Modify the id property of the liElement. Assigns a unique id based on the counter i
         liElement.id = `choiceList${i}`;
+        // Appending the objects created above to the page
         liElement.append(pElement);
         document.querySelector(".choiceContainer").append(liElement);
 
@@ -88,14 +96,18 @@ triviaApp.displayChoice = () => {
             pEvaluation.classList = "choiceText";
             // Append the p to the li
             liEvaluation.append(pEvaluation);
+
+            // Create a function which compares the textContent of the choice which the user clicked and comparing it to the correct answer
             if (event.target.textContent == triviaApp.questionArray[0][triviaApp.questionCounter].correctAnswer) {
                 pEvaluation.innerText = `Correct! \n Click here to continue`;
+                // Updates the score counter by adding 1 when correct answer is selected
                 triviaApp.score++;
+                // Runs function which updates the score
                 triviaApp.updateScore();
             } else {
                 pEvaluation.innerText = `The correct answer is: \n ${triviaApp.questionArray[0][triviaApp.questionCounter].correctAnswer} \n Click here to continue`;
             }
-            // Add an event listener to the new li element to run the function triviaApp.nextQuestion()
+            // Add an event listener to the new li element to run the function triviaApp.nextQuestion() (to load the next set of question and answers)
             liEvaluation.addEventListener("click", function () {
                 triviaApp.nextQuestion();
             });
@@ -103,13 +115,14 @@ triviaApp.displayChoice = () => {
     }
 };
 
+// Function to update the score and append it onto the page
 triviaApp.updateScore = () => {
+    // Clear the html element container
     triviaApp.clearScore();
     const scoreElement = document.createElement("p");
     scoreElement.classList = "scoreText";
-    scoreElement.innerHTML =`${triviaApp.score}`;
+    scoreElement.innerHTML = `${triviaApp.score}`;
     document.querySelector(".scoreContainer").append(scoreElement);
-
 };
 
 // Counter to keep the score
@@ -118,9 +131,13 @@ triviaApp.score = 0;
 // Counter to keep track of the number of itterations
 triviaApp.questionCounter = 0;
 
+// Function which runs at the end of the "loop"
 triviaApp.nextQuestion = () => {
+    // Clears both queston and choices
     triviaApp.clearAll();
+    // Increase the questionCounter to keep track of which question the user is on
     triviaApp.questionCounter++;
+    // Runs the setupQuestion function which processes and displays the next set of questions and choices
     triviaApp.setupQuestion();
 };
 
