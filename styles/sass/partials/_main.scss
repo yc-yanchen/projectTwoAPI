@@ -37,8 +37,8 @@ main {
         margin-bottom: 50px;
         border-radius: 10px;
         cursor: pointer;
+        background-color: var.$primary;
         transition: background-color 0.5s;
-        background-color: var.$mutedGrey;
         box-shadow: 0px 5px 15px -3px rgba(0, 0, 0, 0.33);
     }
     .choiceList:hover,
@@ -50,7 +50,6 @@ main {
 }
 
 footer {
-    background-color: var.$mutedGrey;
     height: 42px;
     display: flex;
     justify-content: center;
