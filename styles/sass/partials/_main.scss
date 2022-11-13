@@ -1,0 +1,81 @@
+@use "./variables" as var;
+
+header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+main {
+    background: rgb(53, 156, 185);
+    background: linear-gradient(307deg, rgba(53, 156, 185, 1) 0%, rgba(106, 238, 202, 1) 100%);
+    height: calc(100vh - 70px - 42px);
+}
+
+.choiceContainer {
+    display: flex;
+    gap: 4%;
+    flex-wrap: wrap;
+    .choiceList {
+        width: 48%;
+        min-height: 100px;
+    }
+    .choiceEvaluation {
+        width: 100%;
+    }
+    .choiceList,
+    .choiceEvaluation {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.5s;
+        background-color: var.$mutedGrey;
+        box-shadow: 0px 5px 15px -3px rgba(0, 0, 0, 0.33);
+    }
+    .choiceList:hover,
+    .choiceList:focus,
+    .choiceEvaluation:hover,
+    .choiceEvaluation:focus {
+        background-color: rgb(239 241 166);
+    }
+}
+
+footer {
+    background-color: var.$mutedGrey;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 420px) {
+    header {
+        height: 60px;
+    }
+    main {
+        height: calc(100vh - 8vh - 5vh);
+    }
+
+    .choiceContainer {
+        gap: 0;
+        flex-direction: column;
+        .choiceList {
+            width: 100%;
+            margin-bottom: 25px;
+            min-height: 50px;
+            padding: 10px;
+        }
+    }
+    footer {
+        height: 5vh;
+    }
+}
