@@ -19,13 +19,16 @@ triviaApp.formElement.addEventListener("submit", function (event) {
     // Create an object to store the selected radio button
     triviaApp.userDif = document.querySelector("input[type='radio']:checked");
 
+    //Create an object to store the number of questions the user wants
+    triviaApp.userQuestionAmount = document.querySelector("select[name='userAmount']");
+
     // variable to store the api url endpoint
     triviaApp.url = new URL("https://the-trivia-api.com/api/questions");
 
     // Search parameters for the url endpoint
     triviaApp.url.search = new URLSearchParams({
         // To request for the number of questions
-        limit: 10,
+        limit: triviaApp.userQuestionAmount.value,
         // To determine the difficulty level of the questions
         difficulty: triviaApp.userDif.value,
     });
