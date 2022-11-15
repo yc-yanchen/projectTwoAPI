@@ -19,23 +19,27 @@ triviaApp.formElement = document.querySelector("form");
 // Attached an event listener to the form
 triviaApp.formElement.addEventListener("submit", function (event) {
     event.preventDefault();
-    console.log("hi");
+
+    // Create an object to store the selected radio button
+    triviaApp.userDif = document.querySelector("input[type='radio']:checked");
+
+    // variable to store the api url endpoint
+    triviaApp.url = new URL("https://the-trivia-api.com/api/questions");
+
+    // Search parameters for the url endpoint
+    triviaApp.url.search = new URLSearchParams({
+        // To request for the number of questions
+        limit: 10,
+        // To determine the difficulty level of the questions
+        difficulty: triviaApp.userDif.value,
+    });
+    triviaApp.clearAll();
+    getQuestion();
 });
 
 //-----------------------------------//
 //---------Testing Area End----------//
 //-----------------------------------//
-
-// variable to store the api url endpoint
-triviaApp.url = new URL("https://the-trivia-api.com/api/questions");
-
-// Search parameters for the url endpoint
-triviaApp.url.search = new URLSearchParams({
-    // To request for the number of questions
-    limit: 10,
-    // To determine the difficulty level of the questions
-    difficulty: "easy",
-});
 
 // Async function to fetch for the api data
 async function getQuestion() {
