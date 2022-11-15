@@ -1,23 +1,14 @@
 @use "./variables" as var;
 
-header {
-height: 70px;
-display: flex;
-align-items: center;
-}
-
-nav {
-    display: flex;
-    align-items: center;
-}
-
-main {
-    background: rgb(53, 156, 185);
-    background: linear-gradient(307deg, rgba(53, 156, 185, 1) 0%, rgba(106, 238, 202, 1) 100%);
-}
-
-.homeHeading h2 {
+.homeHeading {
     font-family: var.$bodyFont;
     font-size: 6rem;
     font-weight: bold;
+}
+
+.welcome {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }

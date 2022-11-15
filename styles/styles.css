@@ -294,6 +294,10 @@ a:visited {
   text-decoration: none;
 }
 
+.buttonText {
+  font-size: 2.4rem;
+}
+
 .tFooter {
   font-size: 1.6rem;
   text-align: center;
@@ -373,15 +377,18 @@ main {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-.choiceContainer .choiceList {
+
+.choiceList {
   width: 48%;
   min-height: 100px;
 }
-.choiceContainer .choiceEvaluation {
+
+.choiceEvaluation {
   width: 100%;
 }
-.choiceContainer .choiceList,
-.choiceContainer .choiceEvaluation {
+
+.choiceList,
+.choiceEvaluation {
   padding: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -401,10 +408,11 @@ main {
   -webkit-box-shadow: 0px 5px 15px -3px rgba(0, 0, 0, 0.33);
           box-shadow: 0px 5px 15px -3px rgba(0, 0, 0, 0.33);
 }
-.choiceContainer .choiceList:hover,
-.choiceContainer .choiceList:focus,
-.choiceContainer .choiceEvaluation:hover,
-.choiceContainer .choiceEvaluation:focus {
+
+.choiceList:hover,
+.choiceList:focus,
+.choiceEvaluation:hover,
+.choiceEvaluation:focus {
   background-color: rgb(239, 241, 166);
 }
 
@@ -445,32 +453,24 @@ footer {
     height: 5vh;
   }
 }
-header {
-  height: 70px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-main {
-  background: rgb(53, 156, 185);
-  background: linear-gradient(307deg, rgb(53, 156, 185) 0%, rgb(106, 238, 202) 100%);
-}
-
-.homeHeading h2 {
+.homeHeading {
   font-family: "Fredoka One", cursive;
   font-size: 6rem;
   font-weight: bold;
+}
+
+.welcome {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
