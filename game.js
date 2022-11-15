@@ -3,11 +3,28 @@ const triviaApp = {};
 
 // Create initialization function
 triviaApp.init = function () {
-    getQuestion();
+    // getQuestion();
 };
 
 // Create an array to store the parsed json data
 triviaApp.questionArray = [];
+
+//-----------------------------------//
+// Testing Area for Difficulty Select//
+//-----------------------------------//
+
+// Create a document object for the form element in the HTML
+triviaApp.formElement = document.querySelector("form");
+
+// Attached an event listener to the form
+triviaApp.formElement.addEventListener("submit", function (event) {
+    event.preventDefault();
+    console.log("hi");
+});
+
+//-----------------------------------//
+//---------Testing Area End----------//
+//-----------------------------------//
 
 // variable to store the api url endpoint
 triviaApp.url = new URL("https://the-trivia-api.com/api/questions");
