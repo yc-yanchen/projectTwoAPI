@@ -3,15 +3,11 @@ const triviaApp = {};
 
 // Create initialization function
 triviaApp.init = function () {
-    // getQuestion();
+    triviaApp.setupAmount();
 };
 
 // Create an array to store the parsed json data
 triviaApp.questionArray = [];
-
-//-----------------------------------//
-// Testing Area for Difficulty Select//
-//-----------------------------------//
 
 // Create a document object for the form element in the HTML
 triviaApp.formElement = document.querySelector("form");
@@ -36,6 +32,18 @@ triviaApp.formElement.addEventListener("submit", function (event) {
     triviaApp.clearAll();
     getQuestion();
 });
+//-----------------------------------//
+//---Testing Area for User Amount ---//
+//-----------------------------------//
+
+triviaApp.setupAmount = () => {
+    for (let i = 0; i < 50; i++) {
+        const optionElement = document.createElement("option");
+        optionElement.value = i + 1;
+        optionElement.innerText = i + 1;
+        document.querySelector("select").append(optionElement);
+    }
+};
 
 //-----------------------------------//
 //---------Testing Area End----------//
