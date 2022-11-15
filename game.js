@@ -65,19 +65,26 @@ async function getQuestion() {
 
 // Function to run through all game setup related functions
 triviaApp.setupQuestion = () => {
+    if (triviaApp.questionCounter == triviaApp.questionArray[0].length) {
+        triviaApp.clearScore();
+        triviaApp.displayResults();
+    } else {
     triviaApp.displayQuestion();
     triviaApp.displayChoice();
     triviaApp.updateScore();
+    }
 };
 
 // Function to display the questions inside the questionArray
 triviaApp.displayQuestion = () => {
+    
     // Create an h2 object in the document
     const questionElement = document.createElement("h2");
     // Adding text content to the h2
     questionElement.innerHTML = triviaApp.questionArray[0][triviaApp.questionCounter].question;
     // Appending the h2 object to the page of the html
     document.querySelector(".questionContainer").append(questionElement);
+  
 };
 
 // Function to display the choices
@@ -171,6 +178,16 @@ triviaApp.nextQuestion = () => {
     triviaApp.questionCounter++;
     // Runs the setupQuestion function which processes and displays the next set of questions and choices
     triviaApp.setupQuestion();
+};
+
+triviaApp.displayResults = () => {
+    const endMessage = document.createElement('h2');
+    document.querySelector(".questionContainer").append(endMessage);
+    if (triviaApp.score/triviaApp.questionArray[0].length >= 1/2) {
+        endMessage.innerText = "Congratulations!";
+    }   else {
+        endMessage.innerText = "Sorry, you suck! Try harder!";
+    } 
 };
 
 // Clear score
