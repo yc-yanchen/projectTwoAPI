@@ -142,7 +142,7 @@ triviaApp.updateScore = () => {
     triviaApp.clearScore();
     const scoreElement = document.createElement("p");
     scoreElement.classList = "scoreText";
-    scoreElement.innerHTML = `${triviaApp.score}`;
+    scoreElement.innerHTML = `${triviaApp.score}/${triviaApp.questionArray[0].length}`;
     document.querySelector(".scoreContainer").append(scoreElement);
 };
 
