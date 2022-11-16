@@ -1,6 +1,6 @@
 import database from "./firebaseConfig.js";
 
-import { ref, push } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+import { ref, push, get } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
 
 const dbRef = ref(database);
 
@@ -206,6 +206,8 @@ triviaApp.displayResults = () => {
     triviaApp.submissionAsset();
 };
 
+//---SCORE SUBMISSION---///
+
 triviaApp.submissionAsset = () => {
     const scoreSubmissionForm = document.createElement("form");
     scoreSubmissionForm.id = "scoreForm";
@@ -240,12 +242,47 @@ triviaApp.submissionAsset = () => {
             triviaApp.clearAll();
             triviaApp.questionCounter = 0;
             triviaApp.score = 0;
-            getQuestion();
+            triviaApp.questionArray = [];
         } else {
             alert("Please enter initials before submitting");
         }
+
+        triviaApp.displayLeaderboard();
     });
 };
+
+//---END OF SCORE SUBMISSION---//
+
+//---LEADERBOARD---//
+
+triviaApp.displayLeaderboard = () => {
+    get(dbRef).then((snapshot) => {
+        const leaderboard = snapshot.val();
+        const tableElement = document.createElement("table");
+        const tableRowElement = document.createElement("tr");
+        const tableHeaderInitial = document.createElement("th");
+        const tableHeaderScore = document.createElement("th");
+        tableHeaderInitial.innerText = "Initial";
+        tableRowElement.append(tableHeaderInitial);
+        tableRowElement.append(tableHeaderScore);
+        tableHeaderScore.innerText = "Score";
+        tableElement.append(tableRowElement);
+        document.querySelector(".questionContainer").append(tableElement);
+
+        for (let entry in leaderboard.scoreEntry) {
+            const tableUserRow = document.createElement("tr");
+            const tableInitial = document.createElement("td");
+            const tableScore = document.createElement("td");
+            tableInitial.textContent = leaderboard.scoreEntry[entry].initial;
+            tableScore.textContent = leaderboard.scoreEntry[entry].score;
+            tableUserRow.append(tableInitial);
+            tableUserRow.append(tableScore);
+            document.querySelector("table").append(tableUserRow);
+        }
+    });
+};
+
+//---END OF LEADERBOARD---//
 
 // Clear score
 triviaApp.clearScore = () => {
