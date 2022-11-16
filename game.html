@@ -30,26 +30,23 @@
                     <form action="">
                         <fieldset>
                             <legend class="formText">Select a difficulty:</legend>
-                            <div class="radioAsset">
-                                <div class="radioContainer">
-                                    <div class="radioAsset">
-                                        <input type="radio" id="easy" name="difficulty" value="easy" checked />
-                                        <label for="easy" class="radioLabel">Easy</label>
-                                    </div>
-                                    <div class="radioAsset">
-                                        <input type="radio" id="medium" name="difficulty" value="medium" />
-                                        <label for="medium" class="radioLabel">Medium</label>
-                                    </div>
-                                    <div class="radioAsset">
-                                        <input type="radio" id="hard" name="difficulty" value="hard" />
-                                        <label for="hard" class="radioLabel">Hard</label>
-                                    </div>
+                            <div class="radioContainer">
+                                <div class="radioAsset">
+                                    <input type="radio" id="easy" name="difficulty" value="easy" checked />
+                                    <label for="easy" class="radioLabel">Easy</label>
+                                </div>
+                                <div class="radioAsset">
+                                    <input type="radio" id="medium" name="difficulty" value="medium" />
+                                    <label for="medium" class="radioLabel">Medium</label>
+                                </div>
+                                <div class="radioAsset">
+                                    <input type="radio" id="hard" name="difficulty" value="hard" />
+                                    <label for="hard" class="radioLabel">Hard</label>
                                 </div>
                             </div>
                         </fieldset>
-                        <label for="userAmount">Select the number of questions:</label>
                         <select name="userAmount" id="userAmount"></select>
-
+                        <label for="userAmount">Select number of questions:</label>
                         <input type="submit" value="Load Questions!" name="loadQuestion" />
                     </form>
                 </div>

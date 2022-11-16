@@ -489,32 +489,6 @@ footer {
   font-size: 4.8rem;
 }
 
-fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-fieldset .radioAsset {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-fieldset .radioAsset .radioContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-fieldset input[type=radio] {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-}
-fieldset .radioLabel {
-  background-color: white;
-  padding: 10px 20px;
-  width: 100px;
-}
-
 form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -526,4 +500,63 @@ form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  gap: 100px;
+}
+
+select {
+  min-height: 40px;
+  width: 250px;
+  font-size: 2.4rem;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+fieldset .radioContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+fieldset .radioAsset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+fieldset .radioLabel {
+  width: 150px;
+  padding: 10px 30px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  text-align: center;
+}
+fieldset input[type=radio]:checked ~ .radioLabel {
+  border: 3px solid skyblue;
+  background-color: rgb(255, 255, 255);
+}
+fieldset input[type=radio] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+input[type=submit] {
+  font-size: 2.4rem;
+  width: 250px;
+  min-height: 40px;
+  border-radius: 10px;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
