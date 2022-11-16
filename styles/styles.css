@@ -303,6 +303,8 @@ a:visited {
   font-size: 3rem;
 }
 
+th,
+td,
 .radioLabel,
 .choiceText {
   font-size: 2.8rem;
@@ -570,4 +572,19 @@ input[type=submit] {
   border: none;
   padding: 20px 30px;
   margin: 0;
+}
+
+#scoreForm {
+  width: 100%;
+}
+#scoreForm input[type=text] {
+  height: 48px;
+  width: 300px;
+  margin: 24px 0 40px 0;
+  font-size: 2.4rem;
+  text-align: center;
+}
+
+table {
+  margin: 0 auto;
 }

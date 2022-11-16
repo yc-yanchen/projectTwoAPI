@@ -193,16 +193,12 @@ triviaApp.displayResults = () => {
     const liEvaluation = document.createElement("li");
     liEvaluation.classList = "choiceEvaluation";
     document.querySelector(".choiceContainer").append(liEvaluation);
-    const pEvaluation = document.createElement("p");
-    pEvaluation.classList = "choiceText";
-    liEvaluation.append(pEvaluation);
-    pEvaluation.innerText = "Play again";
+    const aEvaluation = document.createElement("a");
+    aEvaluation.classList = "choiceText";
+    liEvaluation.append(aEvaluation);
+    aEvaluation.href = "./index.html";
+    aEvaluation.innerText = "Play again";
 
-    // 📍 TO DO: Add a link to Play again button to go back to home page.
-
-    // triviaApp.goHome = () => {
-    //     window.location.href = "../index.html";
-    // };
     triviaApp.submissionAsset();
 };
 
@@ -215,6 +211,7 @@ triviaApp.submissionAsset = () => {
 
     const submissionPrompt = document.createElement("label");
     submissionPrompt.innerText = "Enter Initials to Submit Score";
+    submissionPrompt.classList = "formText";
     submissionPrompt.setAttribute("for", "userInitial");
     scoreSubmissionForm.append(submissionPrompt);
 
