@@ -39,6 +39,10 @@ triviaApp.formElement.addEventListener("submit", function (event) {
 //---Testing Area for User Amount ---//
 //-----------------------------------//
 
+//-----------------------------------//
+//---------Testing Area End----------//
+//-----------------------------------//
+
 triviaApp.setupAmount = () => {
     for (let i = 0; i < 50; i++) {
         const optionElement = document.createElement("option");
@@ -47,10 +51,6 @@ triviaApp.setupAmount = () => {
         document.querySelector("select").append(optionElement);
     }
 };
-
-//-----------------------------------//
-//---------Testing Area End----------//
-//-----------------------------------//
 
 // Async function to fetch for the api data
 async function getQuestion() {

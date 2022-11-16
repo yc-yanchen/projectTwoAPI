@@ -377,8 +377,6 @@ nav {
 }
 
 main {
-  background: rgb(53, 156, 185);
-  background: linear-gradient(307deg, rgb(53, 156, 185) 0%, rgb(106, 238, 202) 100%);
   height: calc(100vh - 70px - 42px);
 }
 
@@ -415,7 +413,7 @@ main {
   margin-bottom: 50px;
   border-radius: 10px;
   cursor: pointer;
-  background-color: #EB9CF5;
+  background-color: #eb9cf5;
   -webkit-transition: background-color 0.5s;
   transition: background-color 0.5s;
   -webkit-box-shadow: 0px 5px 15px -3px rgba(0, 0, 0, 0.33);
@@ -467,7 +465,7 @@ footer {
   }
 }
 header {
-  background-color: #A2FC9A;
+  background-color: #a2fc9a;
 }
 
 .homeHeading {
@@ -494,15 +492,14 @@ header {
 .welcome a {
   font-size: 4.8rem;
 }
-<<<<<<< HEAD
 .welcome .fa-solid,
 .welcome .fa-crown {
   padding: 0 30px;
 }
 
 footer {
-  background-color: #A4E3FF;
-=======
+  background-color: #a4e3ff;
+}
 
 form {
   display: -webkit-box;
@@ -573,5 +570,4 @@ input[type=submit] {
   border: none;
   padding: 20px 30px;
   margin: 0;
->>>>>>> feature-styling-settings
 }
