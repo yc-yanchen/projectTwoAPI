@@ -1,3 +1,11 @@
+import database from "./firebaseConfig.js";
+
+import { ref, push } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+
+const dbRef = ref(database);
+
+const childNodeRef = ref(database, "scoreEntry");
+
 // Create namespace
 const triviaApp = {};
 
@@ -10,7 +18,7 @@ triviaApp.init = function () {
 triviaApp.questionArray = [];
 
 // Create a document object for the form element in the HTML
-triviaApp.formElement = document.querySelector("form");
+triviaApp.formElement = document.querySelector("#userSetting");
 
 // Attached an event listener to the form
 triviaApp.formElement.addEventListener("submit", function (event) {
@@ -72,8 +80,8 @@ triviaApp.setupQuestion = () => {
         triviaApp.displayQuestion();
         triviaApp.displayChoice();
         triviaApp.updateScore();
-        triviaApp.progressBar();
-        triviaApp.goHome();
+        // triviaApp.progressBar();
+        // triviaApp.goHome();
     }
 };
 
@@ -188,6 +196,57 @@ triviaApp.displayResults = () => {
     } else {
         endMessage.innerText = "Sorry, you suck! Try harder!";
     }
+
+    const liEvaluation = document.createElement("li");
+    liEvaluation.classList = "choiceEvaluation";
+    document.querySelector(".choiceContainer").append(liEvaluation);
+    const pEvaluation = document.createElement("p");
+    pEvaluation.classList = "choiceText";
+    liEvaluation.append(pEvaluation);
+    pEvaluation.innerText = "Play again";
+
+    // 📍 TO DO: Add a link to Play again button to go back to home page.
+
+    // triviaApp.goHome = () => {
+    //     window.location.href = "../index.html";
+    // };
+    triviaApp.submissionAsset();
+};
+
+triviaApp.submissionAsset = () => {
+    const scoreSubmissionForm = document.createElement("form");
+    scoreSubmissionForm.id = "scoreForm";
+    document.querySelector(".choiceContainer").append(scoreSubmissionForm);
+
+    const submissionPrompt = document.createElement("label");
+    submissionPrompt.innerText = "Enter Initials to Submit Score";
+    submissionPrompt.setAttribute("for", "userInitial");
+    scoreSubmissionForm.append(submissionPrompt);
+
+    const initialElement = document.createElement("input");
+    initialElement.setAttribute("type", "text");
+    initialElement.id = "userInitial";
+    initialElement.maxLength = 3;
+    scoreSubmissionForm.append(initialElement);
+
+    const submitElement = document.createElement("input");
+    submitElement.setAttribute("type", "submit");
+    submitElement.setAttribute("value", "Submit Score");
+    scoreSubmissionForm.append(submitElement);
+
+    scoreSubmissionForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const submissionContent = {
+            initial: initialElement.value,
+            score: triviaApp.score,
+        };
+        push(childNodeRef, submissionContent);
+        triviaApp.clearAll();
+        triviaApp.questionCounter = 0;
+        triviaApp.score = 0;
+        getQuestion();
+    });
 };
 
 // Clear score
