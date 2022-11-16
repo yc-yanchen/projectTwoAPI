@@ -72,6 +72,8 @@ triviaApp.setupQuestion = () => {
     triviaApp.displayQuestion();
     triviaApp.displayChoice();
     triviaApp.updateScore();
+    triviaApp.progressBar();
+    triviaApp.goHome();
     }
 };
 
@@ -164,6 +166,7 @@ triviaApp.updateScore = () => {
     document.querySelector(".scoreContainer").append(scoreElement);
 };
 
+
 // Counter to keep the score
 triviaApp.score = 0;
 
@@ -187,6 +190,20 @@ triviaApp.displayResults = () => {
         endMessage.innerText = "Congratulations!";
     }   else {
         endMessage.innerText = "Sorry, you suck! Try harder!";
+    } 
+    
+    const liEvaluation = document.createElement("li");
+    liEvaluation.classList = "choiceEvaluation";
+    document.querySelector(".choiceContainer").append(liEvaluation);
+    const pEvaluation = document.createElement("p");
+    pEvaluation.classList = "choiceText";
+    liEvaluation.append(pEvaluation);
+    pEvaluation.innerText = "Play again";
+
+    // 📍 TO DO: Add a link to Play again button to go back to home page.
+
+    triviaApp.goHome = () => {
+        window.location.href="../index.html";
     } 
 };
 

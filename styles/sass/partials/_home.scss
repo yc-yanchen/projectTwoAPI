@@ -1,5 +1,9 @@
 @use "./variables" as var;
 
+header {
+    background-color: #A2FC9A
+}
+
 .homeHeading {
     font-family: var.$bodyFont;
     font-size: 7rem;
@@ -14,6 +18,14 @@
     a {
         font-size: 4.8rem;
     }
+    .fa-solid,
+    .fa-crown {
+        padding: 0 30px;
+    }
+}
+
+footer {
+    background-color: #A4E3FF;
 }
 
 

@@ -413,7 +413,7 @@ main {
   margin-bottom: 50px;
   border-radius: 10px;
   cursor: pointer;
-  background-color: rgb(243, 243, 243);
+  background-color: #EB9CF5;
   -webkit-transition: background-color 0.5s;
   transition: background-color 0.5s;
   -webkit-box-shadow: 0px 5px 15px -3px rgba(0, 0, 0, 0.33);
@@ -464,6 +464,10 @@ footer {
     height: 5vh;
   }
 }
+header {
+  background-color: #A2FC9A;
+}
+
 .homeHeading {
   font-family: "Fredoka One", cursive;
   font-size: 7rem;
@@ -488,28 +492,11 @@ footer {
 .welcome a {
   font-size: 4.8rem;
 }
-
-.endHeading {
-  font-family: "Fredoka One", cursive;
-  font-size: 7rem;
-  font-weight: bold;
+.welcome .fa-solid,
+.welcome .fa-crown {
+  padding: 0 30px;
 }
 
-.congrats {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.congrats a {
-  font-size: 4.8rem;
+footer {
+  background-color: #A4E3FF;
 }
