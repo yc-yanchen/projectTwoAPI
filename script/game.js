@@ -192,6 +192,10 @@ triviaApp.displayResults = () => {
         endMessage.innerText = "Sorry, you suck! Try harder!";
     }
 
+    triviaApp.submissionAsset();
+};
+
+triviaApp.goHome = () => {
     const liEvaluation = document.createElement("li");
     liEvaluation.classList = "choiceEvaluation";
     document.querySelector(".choiceContainer").append(liEvaluation);
@@ -200,8 +204,6 @@ triviaApp.displayResults = () => {
     liEvaluation.append(aEvaluation);
     aEvaluation.href = "./index.html";
     aEvaluation.innerText = "Play again";
-
-    triviaApp.submissionAsset();
 };
 
 //---SCORE SUBMISSION---///
@@ -278,6 +280,7 @@ triviaApp.displayLeaderboard = () => {
             tableUserRow.append(tableScore);
             document.querySelector("table").append(tableUserRow);
         }
+        triviaApp.goHome();
     });
 };
 
