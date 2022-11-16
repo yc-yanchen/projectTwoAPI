@@ -14,7 +14,7 @@ triviaApp.formElement = document.querySelector("form");
 
 // Attached an event listener to the form
 triviaApp.formElement.addEventListener("submit", function (event) {
-    event.preventDefault();
+    console.log(event);
 
     // Create an object to store the selected radio button
     triviaApp.userDif = document.querySelector("input[type='radio']:checked");
@@ -69,24 +69,22 @@ triviaApp.setupQuestion = () => {
         triviaApp.clearScore();
         triviaApp.displayResults();
     } else {
-    triviaApp.displayQuestion();
-    triviaApp.displayChoice();
-    triviaApp.updateScore();
-    triviaApp.progressBar();
-    triviaApp.goHome();
+        triviaApp.displayQuestion();
+        triviaApp.displayChoice();
+        triviaApp.updateScore();
+        triviaApp.progressBar();
+        triviaApp.goHome();
     }
 };
 
 // Function to display the questions inside the questionArray
 triviaApp.displayQuestion = () => {
-    
     // Create an h2 object in the document
     const questionElement = document.createElement("h2");
     // Adding text content to the h2
     questionElement.innerHTML = triviaApp.questionArray[0][triviaApp.questionCounter].question;
     // Appending the h2 object to the page of the html
     document.querySelector(".questionContainer").append(questionElement);
-  
 };
 
 // Function to display the choices
@@ -166,7 +164,6 @@ triviaApp.updateScore = () => {
     document.querySelector(".scoreContainer").append(scoreElement);
 };
 
-
 // Counter to keep the score
 triviaApp.score = 0;
 
@@ -184,27 +181,13 @@ triviaApp.nextQuestion = () => {
 };
 
 triviaApp.displayResults = () => {
-    const endMessage = document.createElement('h2');
+    const endMessage = document.createElement("h2");
     document.querySelector(".questionContainer").append(endMessage);
-    if (triviaApp.score/triviaApp.questionArray[0].length >= 1/2) {
+    if (triviaApp.score / triviaApp.questionArray[0].length >= 1 / 2) {
         endMessage.innerText = "Congratulations!";
-    }   else {
+    } else {
         endMessage.innerText = "Sorry, you suck! Try harder!";
-    } 
-    
-    const liEvaluation = document.createElement("li");
-    liEvaluation.classList = "choiceEvaluation";
-    document.querySelector(".choiceContainer").append(liEvaluation);
-    const pEvaluation = document.createElement("p");
-    pEvaluation.classList = "choiceText";
-    liEvaluation.append(pEvaluation);
-    pEvaluation.innerText = "Play again";
-
-    // 📍 TO DO: Add a link to Play again button to go back to home page.
-
-    triviaApp.goHome = () => {
-        window.location.href="../index.html";
-    } 
+    }
 };
 
 // Clear score

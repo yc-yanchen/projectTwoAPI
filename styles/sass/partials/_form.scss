@@ -1,0 +1,56 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+select {
+    min-height: 40px;
+    width: 250px;
+    font-size: 2.4rem;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    .radioContainer {
+        display: flex;
+        gap: 16px;
+    }
+
+    .radioAsset {
+        display: flex;
+        justify-content: center;
+    }
+
+    .radioLabel {
+        // width: 150px;
+        padding: 10px 30px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 10px;
+        border: 3px solid transparent;
+        text-align: center;
+        cursor: pointer;
+    }
+    input[type="radio"]:checked ~ .radioLabel {
+        border: 3px solid skyblue;
+        background-color: rgba(255, 255, 255, 1);
+    }
+    input[type="radio"] {
+        appearance: none;
+    }
+}
+
+input[type="submit"] {
+    font-size: 2.4rem;
+    width: 250px;
+    border-radius: 10px;
+    border: none;
+    padding: 20px 30px;
+    margin: 0;
+}

@@ -269,7 +269,8 @@ h2,
 p,
 ul,
 li,
-a {
+a,
+.formText {
   font-family: "Fredoka One", cursive;
   margin: 0;
   padding: 0;
@@ -281,11 +282,11 @@ h1 {
   display: inline-block;
 }
 
+.formText,
 h2 {
   font-family: "Lato", sans-serif;
-  font-size: 4.8rem;
+  font-size: 3.8rem;
   text-align: center;
-  font-weight: bold;
 }
 
 a,
@@ -302,6 +303,7 @@ a:visited {
   font-size: 3rem;
 }
 
+.radioLabel,
 .choiceText {
   font-size: 2.8rem;
   font-family: "Lato", sans-serif;
@@ -331,7 +333,7 @@ li {
   margin: 0 auto;
 }
 
-.headerSpacer {
+.smallSpacer {
   height: 1px;
   margin-bottom: 8px;
 }
@@ -492,6 +494,7 @@ header {
 .welcome a {
   font-size: 4.8rem;
 }
+<<<<<<< HEAD
 .welcome .fa-solid,
 .welcome .fa-crown {
   padding: 0 30px;
@@ -499,4 +502,76 @@ header {
 
 footer {
   background-color: #A4E3FF;
+=======
+
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+select {
+  min-height: 40px;
+  width: 250px;
+  font-size: 2.4rem;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+fieldset .radioContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 16px;
+}
+fieldset .radioAsset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+fieldset .radioLabel {
+  padding: 10px 30px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  text-align: center;
+  cursor: pointer;
+}
+fieldset input[type=radio]:checked ~ .radioLabel {
+  border: 3px solid skyblue;
+  background-color: rgb(255, 255, 255);
+}
+fieldset input[type=radio] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+input[type=submit] {
+  font-size: 2.4rem;
+  width: 250px;
+  border-radius: 10px;
+  border: none;
+  padding: 20px 30px;
+  margin: 0;
+>>>>>>> feature-styling-settings
 }
