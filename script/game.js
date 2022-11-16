@@ -43,13 +43,6 @@ triviaApp.formElement.addEventListener("submit", function (event) {
     triviaApp.clearAll();
     getQuestion();
 });
-//-----------------------------------//
-//---Testing Area for User Amount ---//
-//-----------------------------------//
-
-//-----------------------------------//
-//---------Testing Area End----------//
-//-----------------------------------//
 
 triviaApp.setupAmount = () => {
     for (let i = 0; i < 50; i++) {
@@ -241,11 +234,16 @@ triviaApp.submissionAsset = () => {
             initial: initialElement.value,
             score: triviaApp.score,
         };
-        push(childNodeRef, submissionContent);
-        triviaApp.clearAll();
-        triviaApp.questionCounter = 0;
-        triviaApp.score = 0;
-        getQuestion();
+
+        if (initialElement.value) {
+            push(childNodeRef, submissionContent);
+            triviaApp.clearAll();
+            triviaApp.questionCounter = 0;
+            triviaApp.score = 0;
+            getQuestion();
+        } else {
+            alert("Please enter initials before submitting");
+        }
     });
 };
 
