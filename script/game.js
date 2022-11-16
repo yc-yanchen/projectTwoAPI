@@ -2,8 +2,10 @@ import database from "./firebaseConfig.js";
 
 import { ref, push, get } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
 
+// Firebase referencing the database location
 const dbRef = ref(database);
 
+// Firebase construct a new node for the adding user scores
 const childNodeRef = ref(database, "scoreEntry");
 
 // Create namespace
