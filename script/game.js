@@ -22,10 +22,8 @@ triviaApp.questionArray = [];
 // Create a document object for the form element in the HTML
 triviaApp.formElement = document.querySelector("#userSetting");
 
-// Attached an event listener to the form
+// Attached an event listener to the form which collects the game settings which the user selected
 triviaApp.formElement.addEventListener("submit", function (event) {
-    console.log(event);
-
     // Create an object to store the selected radio button
     triviaApp.userDif = document.querySelector("input[type='radio']:checked");
 
@@ -42,10 +40,13 @@ triviaApp.formElement.addEventListener("submit", function (event) {
         // To determine the difficulty level of the questions
         difficulty: triviaApp.userDif.value,
     });
+    // Clear the form element
     triviaApp.clearAll();
+    // Get the questions
     getQuestion();
 });
 
+// Function to create 1 to 50 option choices for user to select
 triviaApp.setupAmount = () => {
     for (let i = 0; i < 50; i++) {
         const optionElement = document.createElement("option");
@@ -66,17 +67,19 @@ async function getQuestion() {
     triviaApp.setupQuestion();
 }
 
-// Function to run through all game setup related functions
+// Function to run through game setup related functions.
 triviaApp.setupQuestion = () => {
-    if (triviaApp.questionCounter == triviaApp.questionArray[0].length) {
-        triviaApp.clearScore();
-        triviaApp.displayResults();
-    } else {
+    // Clear the questions and choices if present
+    triviaApp.clearAll();
+    // If the question counter is less than the length of the question array, display the questions, display the choices, and update the score.
+    // Otherwise, stop displaying the score, and run the display results function
+    if (triviaApp.questionCounter < triviaApp.questionArray[0].length) {
         triviaApp.displayQuestion();
         triviaApp.displayChoice();
         triviaApp.updateScore();
-        // triviaApp.progressBar();
-        // triviaApp.goHome();
+    } else {
+        triviaApp.clearScore();
+        triviaApp.displayResults();
     }
 };
 
@@ -151,7 +154,10 @@ triviaApp.displayChoice = () => {
             }
             // Add an event listener to the new li element to run the function triviaApp.nextQuestion() (to load the next set of question and answers)
             liEvaluation.addEventListener("click", function () {
-                triviaApp.nextQuestion();
+                // Increase the questionCounter to keep track of which question the user is on
+                triviaApp.questionCounter++;
+                // Runs the setupQuestion function which processes and displays the next set of questions and choices
+                triviaApp.setupQuestion();
             });
         });
     }
@@ -167,34 +173,19 @@ triviaApp.updateScore = () => {
     document.querySelector(".scoreContainer").append(scoreElement);
 };
 
-// Counter to keep the score
-triviaApp.score = 0;
-
-// Counter to keep track of the number of itterations
-triviaApp.questionCounter = 0;
-
-// Function which runs at the end of the "loop"
-triviaApp.nextQuestion = () => {
-    // Clears both queston and choices
-    triviaApp.clearAll();
-    // Increase the questionCounter to keep track of which question the user is on
-    triviaApp.questionCounter++;
-    // Runs the setupQuestion function which processes and displays the next set of questions and choices
-    triviaApp.setupQuestion();
-};
-
+// Function to display player results
 triviaApp.displayResults = () => {
     const endMessage = document.createElement("h2");
     document.querySelector(".questionContainer").append(endMessage);
     if (triviaApp.score / triviaApp.questionArray[0].length >= 1 / 2) {
-        endMessage.innerText = "Congratulations!";
+        endMessage.innerText = `Nice job! You scored ${triviaApp.score} points.`;
     } else {
-        endMessage.innerText = "Sorry, you suck! Try harder!";
+        endMessage.innerText = `You scored ${triviaApp.score} points.`;
     }
-
     triviaApp.submissionAsset();
 };
 
+// Function to display a button at the end of the leaderboard page to bring the user back to the start page
 triviaApp.goHome = () => {
     const liEvaluation = document.createElement("li");
     liEvaluation.classList = "choiceEvaluation";
@@ -211,7 +202,7 @@ triviaApp.goHome = () => {
 triviaApp.submissionAsset = () => {
     const scoreSubmissionForm = document.createElement("form");
     scoreSubmissionForm.id = "scoreForm";
-    document.querySelector(".choiceContainer").append(scoreSubmissionForm);
+    document.querySelector(".questionContainer").append(scoreSubmissionForm);
 
     const submissionPrompt = document.createElement("label");
     submissionPrompt.innerText = "Enter Initials to Submit Score";
@@ -285,6 +276,12 @@ triviaApp.displayLeaderboard = () => {
 };
 
 //---END OF LEADERBOARD---//
+
+// Counter to keep track of the number of itterations
+triviaApp.questionCounter = 0;
+
+// Counter to keep the score
+triviaApp.score = 0;
 
 // Clear score
 triviaApp.clearScore = () => {
