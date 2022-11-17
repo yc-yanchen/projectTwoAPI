@@ -87,6 +87,7 @@ triviaApp.setupQuestion = () => {
 triviaApp.displayQuestion = () => {
     // Create an h2 object in the document
     const questionElement = document.createElement("h2");
+    questionElement.classList = "questionText";
     // Adding text content to the h2
     questionElement.innerHTML = triviaApp.questionArray[0][triviaApp.questionCounter].question;
     // Appending the h2 object to the page of the html

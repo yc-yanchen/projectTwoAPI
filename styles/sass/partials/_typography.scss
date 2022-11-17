@@ -1,55 +1,110 @@
-@use "./variables";
+@use "./variables" as var;
+
+html {
+    font-family: "Red Hat Display", sans-serif;
+}
 
 h1,
 h2,
+h3,
+h4,
+h5,
+h6,
 p,
-ul,
-li,
 a,
-.formText {
-    font-family: "Fredoka One", cursive;
+.formText,
+label,
+option,
+select,
+input {
+    font-size: 1.8rem;
     margin: 0;
     padding: 0;
 }
 
 h1 {
-    font-size: 3.2rem;
-    border-radius: 10px;
-    display: inline-block;
-}
-
-.formText,
-h2 {
-    font-family: "Lato", sans-serif;
-    font-size: 3.8rem;
+    font-family: "Titan One", cursive;
+    font-size: 6rem;
     text-align: center;
+}
+.pencil {
+    writing-mode: sideways-rl;
 }
 
 a,
 a:visited {
-    color: rgb(0, 0, 0);
+    color: black;
     text-decoration: none;
 }
 
-.buttonText {
+.questionText::before {
+    content: "Q: ";
+}
+.questionText {
     font-size: 2.4rem;
+    text-align: center;
 }
 
-.scoreText {
-    font-size: 3rem;
-}
-
-th,
-td,
-.radioLabel,
 .choiceText {
-    font-size: 2.8rem;
-    font-family: "Lato", sans-serif;
-    color: black;
-    text-align: center;
+    font-size: 2rem;
 }
 
-.tFooter {
-    font-size: 1.6rem;
-    text-align: center;
+footer {
+    p {
+        text-align: center;
+    }
 }
+
+// h1,
+// h2,
+// p,
+// ul,
+// li,
+// a,
+// .formText {
+//     font-family: "Fredoka One", cursive;
+//     margin: 0;
+//     padding: 0;
+// }
+
+// h1 {
+//     font-size: 3.2rem;
+//     border-radius: 10px;
+//     display: inline-block;
+// }
+
+// .formText,
+// h2 {
+//     font-family: "Lato", sans-serif;
+//     font-size: 3.8rem;
+//     text-align: center;
+// }
+
+// a,
+// a:visited {
+//     color: rgb(0, 0, 0);
+//     text-decoration: none;
+// }
+
+// .buttonText {
+//     font-size: 2.4rem;
+// }
+
+// .scoreText {
+//     font-size: 3rem;
+// }
+
+// th,
+// td,
+// .radioLabel,
+// .choiceText {
+//     font-size: 2.8rem;
+//     font-family: "Lato", sans-serif;
+//     color: black;
+//     text-align: center;
+// }
+
+// .tFooter {
+//     font-size: 1.6rem;
+//     text-align: center;
+// }

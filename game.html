@@ -7,58 +7,68 @@
         <link rel="stylesheet" href="./styles/styles.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lato:wght@300&family=Nova+Square&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&family=Titan+One&display=swap" rel="stylesheet" />
         <title>World Trivia</title>
     </head>
     <body>
-        <!-- Header Section -->
-        <header>
-            <div class="wrapper">
-                <div class="smallSpacer"></div>
-                <a href="index.html">
-                    <h1>Trivia Quiz</h1>
-                </a>
-                <div class="smallSpacer"></div>
+        <div class="background">
+            <!-- Header Section -->
+            <div class="paperHoles">
+                <div class="hole"></div>
+                <div class="hole"></div>
+                <div class="hole"></div>
             </div>
-        </header>
-
-        <!-- Main Section -->
-        <main>
-            <div class="wrapper">
-                <div class="mainLargeSpacer"></div>
-                <div class="questionContainer">
-                    <form id="userSetting" action="">
-                        <fieldset>
-                            <legend class="formText">Select a difficulty:</legend>
-                            <div class="radioContainer">
-                                <div class="radioAsset">
-                                    <input type="radio" id="easy" name="difficulty" value="easy" checked />
-                                    <label for="easy" class="radioLabel">Easy</label>
-                                </div>
-                                <div class="radioAsset">
-                                    <input type="radio" id="medium" name="difficulty" value="medium" />
-                                    <label for="medium" class="radioLabel">Medium</label>
-                                </div>
-                                <div class="radioAsset">
-                                    <input type="radio" id="hard" name="difficulty" value="hard" />
-                                    <label for="hard" class="radioLabel">Hard</label>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <div class="mainLargeSpacer"></div>
-                        <label for="userAmount" class="formText">Select number of questions:</label>
-                        <select name="userAmount" id="userAmount"></select>
-                        <div class="mainLargeSpacer"></div>
-                        <input type="submit" value="Load Questions!" name="loadQuestion" />
-                    </form>
+            <div class="marginLines">
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <header>
+                <div class="wrapper">
+                    <div class="smallSpacer"></div>
+                    <a href="index.html">
+                        <h1>Trivia Quiz! <span class="pencil">✏️</span></h1>
+                    </a>
+                    <div class="smallSpacer"></div>
                 </div>
-                <div class="mainLargeSpacer"></div>
-                <ul class="choiceContainer"></ul>
-                <div class="mainLargeSpacer"></div>
-                <div class="scoreContainer"></div>
-            </div>
-            <!-- END .wrapper -->
-        </main>
+            </header>
+            <!-- Main Section -->
+            <main>
+                <div class="wrapper">
+                    <div class="largeSpacer"></div>
+                    <div class="questionContainer">
+                        <form id="userSetting" action="">
+                            <fieldset>
+                                <legend class="formText">Select a difficulty:</legend>
+                                <div class="radioContainer">
+                                    <div class="radioAsset">
+                                        <input type="radio" id="easy" name="difficulty" value="easy" checked />
+                                        <label for="easy" class="radioLabel">Easy</label>
+                                    </div>
+                                    <div class="radioAsset">
+                                        <input type="radio" id="medium" name="difficulty" value="medium" />
+                                        <label for="medium" class="radioLabel">Medium</label>
+                                    </div>
+                                    <div class="radioAsset">
+                                        <input type="radio" id="hard" name="difficulty" value="hard" />
+                                        <label for="hard" class="radioLabel">Hard</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="largeSpacer"></div>
+                            <label for="userAmount" class="formText">Select number of questions:</label>
+                            <select name="userAmount" id="userAmount"></select>
+                            <div class="largeSpacer"></div>
+                            <input type="submit" value="Load Questions!" name="loadQuestion" />
+                        </form>
+                    </div>
+                    <div class="largeSpacer"></div>
+                    <ul class="choiceContainer"></ul>
+                    <div class="largeSpacer"></div>
+                    <div class="scoreContainer"></div>
+                </div>
+                <!-- END .wrapper -->
+            </main>
+        </div>
 
         <!-- Footer Section -->
         <footer>
