@@ -1,101 +1,103 @@
 @use "./variables" as var;
 
+// Lined paper pattern idea from: https://codepen.io/ceg9498/post/creating-lined-paper
+// Background styling
 div.background {
-    background: repeating-linear-gradient(white, white 25px, #9198e5 26px, #9198e5 27px);
-    max-width: 1100px;
-    margin: 0 auto;
-    height: calc(100vh - 25px);
+	background: repeating-linear-gradient(white, white 25px, #9198e5 26px, #9198e5 27px);
+	max-width: 1100px;
+	margin: 0 auto;
+	height: calc(100vh - 25px);
+	position: relative;
 }
 
 .paperHoles {
-    position: fixed;
-    .hole {
-        height: 35px;
-        width: 35px;
-        background-color: white;
-        border: black solid 1px;
-        border-radius: 50%;
-        position: absolute;
-        left: 50px;
-    }
-    .hole:nth-child(1) {
-        top: 10vh;
-    }
-    .hole:nth-child(2) {
-        top: 50vh;
-    }
-    .hole:nth-child(3) {
-        top: 85vh;
-    }
+	position: fixed;
+	.hole {
+		height: 35px;
+		width: 35px;
+		background-color: white;
+		border: black solid 1px;
+		border-radius: 50%;
+		position: absolute;
+		left: 50px;
+	}
+	.hole:nth-child(1) {
+		top: 10vh;
+	}
+	.hole:nth-child(2) {
+		top: 50vh;
+	}
+	.hole:nth-child(3) {
+		top: 85vh;
+	}
 }
 
-.marginLines {
-    height: 100%;
-    width: 100%;
-    // Match the max-width of the wrapper/background
-    max-width: 1100px;
-    position: fixed;
-
-    .line {
-        position: absolute;
-        background-color: pink;
-        height: 100%;
-        width: 3px;
-    }
-    .line:nth-child(1) {
-        left: 125px;
-    }
-    .line:nth-child(2) {
-        right: 125px;
-    }
+.line {
+	position: absolute;
+	background-color: pink;
+	height: 100%;
+	width: 3px;
+}
+.lineL {
+	left: 125px;
+}
+.lineR {
+	right: 125px;
 }
 
 header {
-    background-color: white;
+	background-color: white;
 }
 
 .questionContainer {
-    background-color: white;
-    padding: 15px 5px;
-    border-radius: 10px;
-    border: solid black 2px;
+	background-color: white;
+	padding: 15px 5px;
+	border-radius: 10px;
+	border: solid black 2px;
 }
 
 .choiceContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    .choiceList {
-        width: 100%;
-        padding: 10px 20px;
-        border-radius: 10px;
-    }
-    .choiceList:nth-child(1) {
-        background-color: var.$red;
-    }
-    .choiceList:nth-child(2) {
-        background-color: var.$yellow;
-    }
-    .choiceList:nth-child(3) {
-        background-color: var.$green;
-    }
-    .choiceList:nth-child(4) {
-        background-color: var.$blue;
-    }
-    .choiceList:nth-child(1):hover {
-        filter: brightness(0.85);
-    }
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+	.choiceList {
+		width: 100%;
+		padding: 10px 20px;
+		border-radius: 10px;
+	}
+	.choiceList:nth-child(1) {
+		background-color: var.$red;
+	}
+	.choiceList:nth-child(2) {
+		background-color: var.$yellow;
+	}
+	.choiceList:nth-child(3) {
+		background-color: var.$green;
+	}
+	.choiceList:nth-child(4) {
+		background-color: var.$blue;
+	}
+	.choiceList:hover {
+		filter: brightness(0.85);
+	}
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
-    right: -50%;
-    left: -50%;
-    background-color: white;
-    padding: 5px 0;
-    height: 25px;
+	position: absolute;
+	bottom: 0;
+	right: -50%;
+	left: -50%;
+	background-color: white;
+	padding: 5px 0;
+	height: 25px;
+}
+
+@media (max-width: 875px) {
+	.line,
+	.paperHoles {
+		display: none;
+	}
 }
 // header {
 //     height: 70px;

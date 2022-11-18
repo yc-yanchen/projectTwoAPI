@@ -1,44 +1,49 @@
 @use "./variables" as var;
 
 html {
-    font-size: 62.5%;
+	font-size: 62.5%;
 }
 
 ul,
 li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 .wrapper {
-    width: 70%;
-
-    margin: 0 auto;
+	width: 70%;
+	margin: 0 auto;
 }
 
 .smallSpacer {
-    height: 1px;
-    margin-bottom: 8px;
+	height: 1px;
+	margin-bottom: 8px;
 }
 
 .largeSpacer {
-    height: 1px;
-    margin-bottom: 56px;
+	height: 1px;
+	margin-bottom: 56px;
 }
 
 .mainLargePadding {
-    height: 1px;
-    padding-bottom: 48px;
+	height: 1px;
+	padding-bottom: 48px;
 }
 
-@media (max-width: 420px) {
-    .mainLargeSpacer {
-        height: 1px;
-        margin-bottom: 24px;
-    }
+@media (max-width: 475px) {
+	.largeSpacer {
+		height: 1px;
+		margin-bottom: 24px;
+	}
 
-    .mainLargePadding {
-        padding-bottom: 24px;
-    }
+	.mainLargePadding {
+		padding-bottom: 24px;
+	}
+}
+
+@media (max-width: 875px) {
+	.wrapper {
+		width: 85%;
+	}
 }
