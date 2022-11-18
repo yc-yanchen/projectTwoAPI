@@ -1,29 +1,29 @@
 @use "./variables" as var;
 
-header {
-    background-color: #a2fc9a;
-}
+// header {
+//     background-color: #a2fc9a;
+// }
 
-.homeHeading {
-    font-family: var.$bodyFont;
-    font-size: 7rem;
-    font-weight: bold;
-}
+// .homeHeading {
+//     font-family: var.$bodyFont;
+//     font-size: 7rem;
+//     font-weight: bold;
+// }
 
-.welcome {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    a {
-        font-size: 4.8rem;
-    }
-    .fa-solid,
-    .fa-crown {
-        padding: 0 30px;
-    }
-}
+// .welcome {
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: column;
+//     align-items: center;
+//     a {
+//         font-size: 4.8rem;
+//     }
+//     .fa-solid,
+//     .fa-crown {
+//         padding: 0 30px;
+//     }
+// }
 
-footer {
-    background-color: #a4e3ff;
-}
+// footer {
+//     background-color: #a4e3ff;
+// }
