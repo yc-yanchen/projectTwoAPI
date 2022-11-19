@@ -43,6 +43,7 @@ h1 {
 
 .homeHeading {
 	font-size: 4rem;
+	text-align: center;
 }
 
 // Typography for question text
@@ -72,5 +73,17 @@ td {
 footer {
 	p {
 		text-align: center;
+	}
+}
+
+@media (max-width: 475px) {
+	h1 {
+		font-size: 4.4rem;
+	}
+	.questionText {
+		font-size: 2rem;
+	}
+	.scoreText {
+		font-size: 1.8rem;
 	}
 }
