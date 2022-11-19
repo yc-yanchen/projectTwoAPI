@@ -191,14 +191,14 @@ triviaApp.displayResults = () => {
 // Function to display a button at the end of the leaderboard page to bring the user back to the start page
 // Note that only the center text in the li button will lead the click to the home page and that the rest of the button does not do anything
 triviaApp.goHome = () => {
-	const liEvaluation = document.createElement("li");
-	liEvaluation.classList = "choiceEvaluation choiceList selectionButton";
-	document.querySelector(".choiceContainer").append(liEvaluation);
-	const aEvaluation = document.createElement("a");
-	aEvaluation.classList = "choiceText";
-	liEvaluation.append(aEvaluation);
-	aEvaluation.href = "./index.html";
-	aEvaluation.innerText = "Play again";
+	const liElement = document.createElement("li");
+	liElement.classList = "homeButtonContainer";
+	document.querySelector(".choiceContainer").append(liElement);
+	const homeButton = document.createElement("a");
+	homeButton.classList = "choiceList selectionButton";
+	liElement.append(homeButton);
+	homeButton.href = "./index.html";
+	homeButton.innerText = "Play again";
 };
 
 //---SCORE SUBMISSION---///

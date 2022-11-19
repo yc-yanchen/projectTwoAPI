@@ -441,6 +441,16 @@ input[type=radio]:checked ~ .selectionButton {
   width: 120px;
 }
 
+.homeButtonContainer {
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 footer {
   position: absolute;
   bottom: 0;
