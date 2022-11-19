@@ -26,36 +26,36 @@
 		<main>
 			<div class="wrapper">
 				<div class="mediumSpacer"></div>
-				<div class="questionContainer">
+				<div class="questionContainer infoBox">
 					<form id="userSetting" action="">
 						<fieldset>
 							<legend class="formText">Select a difficulty:</legend>
 							<div class="radioContainer">
 								<div class="radioAsset">
 									<input type="radio" id="easy" name="difficulty" value="easy" checked />
-									<label for="easy" class="radioLabel">Easy</label>
+									<label for="easy" class="radioLabel selectionButton">Easy</label>
 								</div>
 								<div class="radioAsset">
 									<input type="radio" id="medium" name="difficulty" value="medium" />
-									<label for="medium" class="radioLabel">Medium</label>
+									<label for="medium" class="radioLabel selectionButton">Medium</label>
 								</div>
 								<div class="radioAsset">
 									<input type="radio" id="hard" name="difficulty" value="hard" />
-									<label for="hard" class="radioLabel">Hard</label>
+									<label for="hard" class="radioLabel selectionButton">Hard</label>
 								</div>
 							</div>
 						</fieldset>
-						<div class="mainLargeSpacer"></div>
+						<div class="mediumSpacer"></div>
 						<label for="userAmount" class="formText">Select number of questions:</label>
 						<select name="userAmount" id="userAmount"></select>
-						<div class="mainLargeSpacer"></div>
-						<input type="submit" value="Load Questions!" name="loadQuestion" />
+						<div class="mediumSpacer"></div>
+						<input type="submit" value="Load Questions!" name="loadQuestion" class="selectionButton" />
 					</form>
 				</div>
 				<div class="mediumSpacer"></div>
 				<ul class="choiceContainer"></ul>
 				<div class="smallSpacer"></div>
-				<div class="scoreContainer"></div>
+				<div class="forScore"></div>
 			</div>
 			<!-- END .wrapper -->
 		</main>

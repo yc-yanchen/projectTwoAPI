@@ -79,6 +79,7 @@ triviaApp.setupQuestion = () => {
 		triviaApp.updateScore();
 	} else {
 		triviaApp.clearScore();
+		document.querySelector(".forScore").classList = "forScore";
 		triviaApp.displayResults();
 	}
 };
@@ -119,7 +120,7 @@ triviaApp.displayChoice = () => {
 		// Modify the class property of the pElement
 		pElement.classList = "choiceText";
 		// Modify the class property of the class list
-		liElement.classList = "choiceList";
+		liElement.classList = "choiceList selectionButton";
 		// Modify the id property of the liElement. Assigns a unique id based on the counter i
 		liElement.id = `choiceList${i}`;
 		// Appending the objects created above to the page
@@ -133,7 +134,7 @@ triviaApp.displayChoice = () => {
 			// Create li Element to store paragraph element
 			const liEvaluation = document.createElement("li");
 			// Assign it a class to style
-			liEvaluation.classList = "choiceEvaluation choiceList";
+			liEvaluation.classList = "choiceEvaluation choiceList selectionButton";
 			// Append the li to the ul
 			document.querySelector(".choiceContainer").append(liEvaluation);
 			// Create a p Element to display the evaluatino
@@ -167,11 +168,12 @@ triviaApp.displayChoice = () => {
 // Function to update the score and append it onto the page
 triviaApp.updateScore = () => {
 	// Clear the html element container
+	document.querySelector(".forScore").classList = "forScore infoBox";
 	triviaApp.clearScore();
 	const scoreElement = document.createElement("p");
 	scoreElement.classList = "scoreText";
 	scoreElement.innerHTML = `${triviaApp.score}/${triviaApp.questionArray[0].length}`;
-	document.querySelector(".scoreContainer").append(scoreElement);
+	document.querySelector(".forScore").append(scoreElement);
 };
 
 // Function to display player results
@@ -187,9 +189,10 @@ triviaApp.displayResults = () => {
 };
 
 // Function to display a button at the end of the leaderboard page to bring the user back to the start page
+// Note that only the center text in the li button will lead the click to the home page and that the rest of the button does not do anything
 triviaApp.goHome = () => {
 	const liEvaluation = document.createElement("li");
-	liEvaluation.classList = "choiceEvaluation choiceList";
+	liEvaluation.classList = "choiceEvaluation choiceList selectionButton";
 	document.querySelector(".choiceContainer").append(liEvaluation);
 	const aEvaluation = document.createElement("a");
 	aEvaluation.classList = "choiceText";
@@ -220,6 +223,7 @@ triviaApp.submissionAsset = () => {
 	const submitElement = document.createElement("input");
 	submitElement.setAttribute("type", "submit");
 	submitElement.setAttribute("value", "Submit Score");
+	submitElement.classList = "selectionButton";
 	scoreSubmissionForm.append(submitElement);
 
 	scoreSubmissionForm.addEventListener("submit", function (event) {
@@ -286,7 +290,7 @@ triviaApp.score = 0;
 
 // Clear score
 triviaApp.clearScore = () => {
-	document.querySelector(".scoreContainer").innerHTML = "";
+	document.querySelector(".forScore").innerHTML = "";
 };
 
 // Clear choices
