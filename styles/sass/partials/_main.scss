@@ -2,16 +2,49 @@
 
 header {
 	background-color: var.$yellow;
+	-webkit-box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.1);
 }
 
 .questionContainer {
-	background-color: var.$offWhite;
-	height: 200px;
-	padding: 30px;
-	border-radius: 10px;
+	flex-direction: column;
+}
+
+.infoBox {
+	min-height: 50px;
+	padding: 18px 0 18px 0;
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
+	-webkit-box-shadow: 5px 5px 15px -10px rgba(0, 0, 0, 0.33);
+	box-shadow: 5px 5px 15px -10px rgba(0, 0, 0, 0.33);
+	background-color: var.$offWhite;
+	border-radius: 10px;
+}
+
+.selectionButton {
+	min-height: 50px;
+	padding: 18px 0 18px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	-webkit-box-shadow: 5px 5px 15px -10px rgba(0, 0, 0, 0.33);
+	box-shadow: 5px 5px 15px -10px rgba(0, 0, 0, 0.33);
+
+	cursor: pointer;
+	background-color: var.$yellow;
+	border-radius: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	transition: transform, filter 0.15s;
+}
+.selectionButton:hover,
+.selectionButton:focus,
+input[type="radio"]:checked ~ .selectionButton {
+	filter: brightness(0.8);
+	transform: scale(0.97);
 }
 
 .choiceContainer {
@@ -19,40 +52,16 @@ header {
 	flex-wrap: wrap;
 	gap: 2%;
 	.choiceList {
-		min-height: 50px;
-		padding: 18px 0 18px 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-
-		background-color: var.$yellow;
-		border-radius: 100px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
 		width: 49%;
 		margin-bottom: 18px;
-		transition: transform, filter 0.15s;
 	}
-	.choiceList:hover,
-	.choicelist:focus {
-		filter: brightness(0.9);
-		transform: scale(0.97);
-	}
+
 	.choiceEvaluation {
 		width: 100%;
 	}
 }
 
-.scoreContainer {
-	min-height: 50px;
-	padding: 18px 0 18px 0;
-	border-radius: 10px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	background-color: var.$offWhite;
+.forScore {
 	width: 120px;
 }
 
@@ -62,8 +71,9 @@ footer {
 	right: -50%;
 	left: -50%;
 	background-color: var.$offWhite;
-	padding: 5px 0;
 	height: 25px;
+	// padding: 15px 0;
+	// margin: -15px 0;
 }
 
 // header {
