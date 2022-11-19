@@ -271,12 +271,12 @@ ul,
 li,
 a,
 .formText {
-  font-family: "Fredoka One", cursive;
   margin: 0;
   padding: 0;
 }
 
 h1 {
+  font-family: "Nova Square", cursive;
   font-size: 3.2rem;
   border-radius: 10px;
   display: inline-block;
@@ -284,7 +284,7 @@ h1 {
 
 .formText,
 h2 {
-  font-family: "Lato", sans-serif;
+  font-family: "Nova Square", cursive;
   font-size: 3.8rem;
   text-align: center;
 }
@@ -301,6 +301,7 @@ a:visited {
 
 .scoreText {
   font-size: 3rem;
+  font-weight: bold;
 }
 
 th,
@@ -308,8 +309,8 @@ td,
 .radioLabel,
 .choiceText {
   font-size: 2.8rem;
-  font-family: "Lato", sans-serif;
-  color: black;
+  font-family: "Nova Square", cursive;
+  color: rgb(0, 0, 0);
   text-align: center;
 }
 
@@ -320,6 +321,19 @@ td,
 
 html {
   font-size: 62.5%;
+}
+
+header,
+main,
+footer {
+  background-color: rgb(72, 49, 212);
+}
+
+h1,
+.tFooter {
+  color: rgb(204, 243, 129);
+  font-weight: bold;
+  font-family: "Nova Square", cursive;
 }
 
 ul,
@@ -397,7 +411,7 @@ main {
 }
 
 .choiceEvaluation {
-  width: 100%;
+  margin: 0 auto;
 }
 
 .choiceList,
@@ -415,7 +429,7 @@ main {
   margin-bottom: 50px;
   border-radius: 10px;
   cursor: pointer;
-  background-color: #eb9cf5;
+  background-color: rgb(231, 70, 45);
   -webkit-transition: background-color 0.5s;
   transition: background-color 0.5s;
   -webkit-box-shadow: 0px 5px 15px -3px rgba(0, 0, 0, 0.33);
@@ -427,6 +441,12 @@ main {
 .choiceEvaluation:hover,
 .choiceEvaluation:focus {
   background-color: rgb(239, 241, 166);
+}
+
+table.questionContainer {
+  max-height: -webkit-fit-content;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
 }
 
 footer {
@@ -462,16 +482,18 @@ footer {
     min-height: 50px;
     padding: 10px;
   }
+  .questionContainer {
+    width: 100%;
+    margin-bottom: 25px;
+    min-height: 20px;
+  }
   footer {
     height: 5vh;
   }
 }
-header {
-  background-color: #a2fc9a;
-}
-
 .homeHeading {
-  font-family: "Fredoka One", cursive;
+  font-family: "Nova Square", cursive;
+  color: rgb(204, 243, 129);
   font-size: 7rem;
   font-weight: bold;
 }
@@ -493,16 +515,34 @@ header {
 }
 .welcome a {
   font-size: 4.8rem;
+  font-family: "Nova Square", cursive;
 }
 .welcome .fa-solid,
 .welcome .fa-crown {
   padding: 0 30px;
 }
 
-footer {
-  background-color: #a4e3ff;
+@media (max-width: 420px) {
+  header {
+    height: 60px;
+  }
+  .choiceContainer {
+    gap: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .choiceContainer .choiceList {
+    width: 100%;
+    margin-bottom: 25px;
+    min-height: 50px;
+    padding: 10px;
+  }
+  footer {
+    height: 5vh;
+  }
 }
-
 form {
   display: -webkit-box;
   display: -ms-flexbox;

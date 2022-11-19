@@ -4,6 +4,19 @@ html {
     font-size: 62.5%;
 }
 
+header,
+main,
+footer {
+    background-color: var.$background;
+}
+
+h1,
+.tFooter {
+    color: var.$header;
+    font-weight: bold;
+    font-family: var.$main;
+}
+
 ul,
 li {
     margin: 0;
@@ -31,6 +44,7 @@ li {
     height: 1px;
     padding-bottom: 48px;
 }
+
 
 @media (max-width: 420px) {
     .mainLargeSpacer {

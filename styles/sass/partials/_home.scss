@@ -1,11 +1,9 @@
 @use "./variables" as var;
 
-header {
-    background-color: #a2fc9a;
-}
 
 .homeHeading {
-    font-family: var.$bodyFont;
+    font-family: var.$main;
+    color: var.$header;
     font-size: 7rem;
     font-weight: bold;
 }
@@ -17,6 +15,7 @@ header {
     align-items: center;
     a {
         font-size: 4.8rem;
+        font-family: var.$main;
     }
     .fa-solid,
     .fa-crown {
@@ -24,6 +23,22 @@ header {
     }
 }
 
-footer {
-    background-color: #a4e3ff;
+@media (max-width: 420px) {
+    header {
+        height: 60px;
+    }
+    
+    .choiceContainer {
+        gap: 0;
+        flex-direction: column;
+        .choiceList {
+            width: 100%;
+            margin-bottom: 25px;
+            min-height: 50px;
+            padding: 10px;
+        }
+    }
+    footer {
+        height: 5vh;
+    }
 }
