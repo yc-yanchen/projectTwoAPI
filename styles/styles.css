@@ -337,13 +337,6 @@ html {
   font-size: 62.5%;
 }
 
-ul,
-li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
 .wrapper {
   width: 85%;
   max-width: 1200px;
@@ -360,11 +353,6 @@ li {
 
 .largeSpacer {
   height: 56px;
-}
-
-.largePadding {
-  height: 1px;
-  padding-bottom: 48px;
 }
 
 header {
