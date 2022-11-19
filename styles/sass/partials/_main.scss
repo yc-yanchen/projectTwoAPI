@@ -62,7 +62,10 @@ input[type="radio"]:checked ~ .selectionButton {
 }
 
 .forScore {
-	width: 120px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 18px;
 }
 
 .homeButtonContainer {

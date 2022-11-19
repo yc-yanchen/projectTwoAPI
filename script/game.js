@@ -146,12 +146,11 @@ triviaApp.displayChoice = () => {
 
 			// Create a function which compares the textContent of the choice which the user clicked and comparing it to the correct answer
 			if (event.target.textContent == triviaApp.questionArray[0][triviaApp.questionCounter].correctAnswer) {
-				pEvaluation.innerText = `Correct! \n Click here to continue`;
-				// Updates the score counter by adding 1 when correct answer is selected
-				triviaApp.score++;
 				// Runs function which updates the score
-				triviaApp.updateScore();
+				triviaApp.scoreAddition();
+				pEvaluation.innerText = `Correct! \n Click here to continue`;
 			} else {
+				triviaApp.scoreSubtract();
 				pEvaluation.innerText = `The correct answer is: \n ${triviaApp.questionArray[0][triviaApp.questionCounter].correctAnswer} \n Click here to continue`;
 			}
 			// Add an event listener to the new li element to run the function triviaApp.nextQuestion() (to load the next set of question and answers)
@@ -165,15 +164,45 @@ triviaApp.displayChoice = () => {
 	}
 };
 
+triviaApp.scoreAddition = () => {
+	if (triviaApp.userDif.value == "easy") {
+		triviaApp.score = triviaApp.score + 100;
+	}
+	if (triviaApp.userDif.value == "medium") {
+		triviaApp.score = triviaApp.score + 125;
+	}
+	if (triviaApp.userDif.value == "hard") {
+		triviaApp.score = triviaApp.score + 150;
+	}
+};
+
+triviaApp.scoreSubtract = () => {
+	if (!triviaApp.score == 0) {
+		if (triviaApp.userDif.value == "easy") {
+			triviaApp.score = triviaApp.score - 20;
+		}
+		if (triviaApp.userDif.value == "medium") {
+			triviaApp.score = triviaApp.score - 50;
+		}
+		if (triviaApp.userDif.value == "hard") {
+			triviaApp.score = triviaApp.score - 90;
+		}
+	}
+};
+
 // Function to update the score and append it onto the page
 triviaApp.updateScore = () => {
 	// Clear the html element container
 	document.querySelector(".forScore").classList = "forScore infoBox";
 	triviaApp.clearScore();
 	const scoreElement = document.createElement("p");
+	const progressElement = document.createElement("p");
+	progressElement.classList = "scoreText";
 	scoreElement.classList = "scoreText";
-	scoreElement.innerHTML = `${triviaApp.score}/${triviaApp.questionArray[0].length}`;
+	progressElement.innerHTML = `Progress: ${triviaApp.questionCounter}/${triviaApp.questionArray[0].length}`;
+	scoreElement.innerHTML = `Score: ${triviaApp.score}`;
 	document.querySelector(".forScore").append(scoreElement);
+	document.querySelector(".forScore").append(progressElement);
 };
 
 // Function to display player results

@@ -461,7 +461,17 @@ input[type=radio]:checked ~ .selectionButton {
 }
 
 .forScore {
-  width: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 18px;
 }
 
 .homeButtonContainer {
@@ -566,7 +576,7 @@ fieldset .radioContainer {
   gap: 16px;
 }
 fieldset .radioLabel {
-  width: 125px;
+  width: 200px;
 }
 fieldset input[type=radio] {
   -webkit-appearance: none;
