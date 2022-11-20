@@ -50,8 +50,10 @@ triviaApp.formElement.addEventListener("submit", function (event) {
 triviaApp.setupAmount = () => {
 	for (let i = 1; i <= 50; i++) {
 		const optionElement = document.createElement("option");
+		// Assigning the current i to the value and innerText of option
 		optionElement.value = i;
 		optionElement.innerText = i;
+		// Appending the options
 		document.querySelector("select").append(optionElement);
 	}
 };
@@ -71,7 +73,7 @@ async function getQuestion() {
 triviaApp.setupQuestion = () => {
 	// Clear the questions and choices if present
 	triviaApp.clearAll();
-	// If the question counter is less than the length of the question array, display the questions, display the choices, and update the score.
+	// If the triviaApp.questionCounter is less than the length of the question array, display the questions, display the choices, and update the score.
 	// Otherwise, stop displaying the score, and run the display results function
 	if (triviaApp.questionCounter < triviaApp.questionArray[0].length) {
 		triviaApp.displayQuestion();
@@ -79,7 +81,6 @@ triviaApp.setupQuestion = () => {
 		triviaApp.updateScore();
 	} else {
 		triviaApp.clearScore();
-		document.querySelector(".forScore").classList = "forScore";
 		triviaApp.displayResults();
 	}
 };
