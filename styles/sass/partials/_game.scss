@@ -18,6 +18,7 @@ header {
 // Styling for .mainContainer which holds most dynamically generated elements except for the choices
 .mainContainer {
 	background-color: var.$containerBG;
+	max-height: 80vh;
 }
 
 // Styling for the choices

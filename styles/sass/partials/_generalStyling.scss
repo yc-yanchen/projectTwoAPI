@@ -13,7 +13,7 @@ html {
 	margin: 0 auto;
 }
 
-// Spacers to provide consistent spacing throughout the page
+// Spacers to provide consistent styling
 .smallSpacer {
 	height: 16px;
 }
@@ -22,14 +22,21 @@ html {
 	height: 30px;
 }
 
+.largeSpacer {
+	height: 56px;
+}
+
 // Media queries styling
 @media (max-width: 475px) {
-	// Media query for the spacers
 	.smallSpacer {
 		height: 8px;
 	}
 
 	.mediumSpacer {
 		height: 18px;
+	}
+
+	.largeSpacer {
+		height: 28px;
 	}
 }

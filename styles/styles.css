@@ -389,12 +389,19 @@ html {
   height: 30px;
 }
 
+.largeSpacer {
+  height: 56px;
+}
+
 @media (max-width: 475px) {
   .smallSpacer {
     height: 8px;
   }
   .mediumSpacer {
     height: 18px;
+  }
+  .largeSpacer {
+    height: 28px;
   }
 }
 header {
@@ -422,6 +429,7 @@ header {
 
 .mainContainer {
   background-color: rgb(34, 38, 73);
+  max-height: 80vh;
 }
 
 .choiceContainer {
@@ -591,10 +599,10 @@ input[type=submit] {
   border: none;
 }
 
-#scoreForm {
+.scoreForm {
   width: 100%;
 }
-#scoreForm input[type=text] {
+.scoreForm input[type=text] {
   height: 48px;
   width: 300px;
   margin: 24px 0 40px 0;

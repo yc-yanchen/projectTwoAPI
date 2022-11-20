@@ -240,7 +240,7 @@ triviaApp.displayResults = () => {
 triviaApp.submissionAsset = () => {
 	// Creating the form element which will hold the rest of the form content
 	const scoreSubmissionForm = document.createElement("form");
-	scoreSubmissionForm.id = "scoreForm";
+	scoreSubmissionForm.classList = "scoreForm";
 	triviaApp.appendMain(scoreSubmissionForm);
 
 	// Create a form label
