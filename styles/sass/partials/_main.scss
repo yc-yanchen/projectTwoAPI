@@ -12,31 +12,32 @@ header {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-
 	border-radius: 5px;
 }
 
-//
+// Styling for .mainContainer which holds most dynamically generated elements except for the choices
 .mainContainer {
 	background-color: var.$containerBG;
 }
 
+// Styling for the choices
 .choiceContainer {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 2%;
+	// Styling for the four choices, displayed as a 2x2
 	.choiceList {
 		width: 49%;
 		margin-bottom: 18px;
 	}
-
+	// Styling for the dynamically generated element which tells the user whether they are correct or incorrect
 	.choiceEvaluation {
 		width: 100%;
 	}
 }
 
+//
 .forScore {
-	// align-items: flex-start;
 	flex-direction: row;
 	justify-content: space-between;
 	padding: 18px;

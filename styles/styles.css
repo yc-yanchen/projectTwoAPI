@@ -438,7 +438,7 @@ header {
 }
 
 .mainContainer {
-  background-color: rgb(40, 37, 52);
+  background-color: rgb(34, 38, 73);
 }
 
 .choiceContainer {
@@ -482,7 +482,7 @@ footer {
   bottom: 0;
   right: 0%;
   left: 0%;
-  background-color: rgb(40, 37, 52);
+  background-color: rgb(34, 38, 73);
   height: 25px;
 }
 
