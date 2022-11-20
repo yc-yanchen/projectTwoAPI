@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="./styles/styles.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Nova+Square&family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
 		<title>World Trivia</title>
 	</head>
 	<body>
@@ -16,7 +16,7 @@
 			<div class="wrapper">
 				<div class="smallSpacer"></div>
 				<a href="index.html">
-					<h1><span class="tBlue">Trivia</span> <span class="tYellow">Quiz!</span></h1>
+					<h1><span class="tBlue">Trivia</span> <span class="tRed">Quiz!</span></h1>
 				</a>
 				<div class="smallSpacer"></div>
 			</div>
@@ -26,22 +26,22 @@
 		<main>
 			<div class="wrapper">
 				<div class="mediumSpacer"></div>
-				<div class="questionContainer infoBox">
+				<div class="mainContainer boxStyling">
 					<form id="userSetting" action="">
 						<fieldset>
 							<legend class="formText">Select a difficulty:</legend>
 							<div class="radioContainer">
 								<div class="radioAsset">
 									<input type="radio" id="easy" name="difficulty" value="easy" checked />
-									<label for="easy" class="radioLabel selectionButton">Easy (pts x1.00)</label>
+									<label for="easy" class="selectionButton boxStyling menuButton">Easy (pts x1.00)</label>
 								</div>
 								<div class="radioAsset">
 									<input type="radio" id="medium" name="difficulty" value="medium" />
-									<label for="medium" class="radioLabel selectionButton">Medium (pts x1.25)</label>
+									<label for="medium" class="selectionButton boxStyling menuButton">Medium (pts x1.25)</label>
 								</div>
 								<div class="radioAsset">
 									<input type="radio" id="hard" name="difficulty" value="hard" />
-									<label for="hard" class="radioLabel selectionButton">Hard (pts x1.50)</label>
+									<label for="hard" class="selectionButton boxStyling menuButton">Hard (pts x1.50)</label>
 								</div>
 							</div>
 						</fieldset>
@@ -49,12 +49,12 @@
 						<label for="userAmount" class="formText">Select number of questions:</label>
 						<select name="userAmount" id="userAmount"></select>
 						<div class="mediumSpacer"></div>
-						<input type="submit" value="Load Questions!" name="loadQuestion" class="selectionButton" />
+						<input type="submit" value="Load Questions!" name="loadQuestion" class="selectionButton boxStyling menuButton" />
 					</form>
 				</div>
 				<div class="mediumSpacer"></div>
 				<ul class="choiceContainer"></ul>
-				<div class="largeSpacer"></div>
+				<div class="mediumSpacer"></div>
 				<div class="forScore"></div>
 			</div>
 			<!-- END .wrapper -->

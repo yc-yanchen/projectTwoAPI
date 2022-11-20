@@ -1,50 +1,27 @@
 @use "./variables" as var;
 
 header {
-	background-color: var.$yellow;
+	background-color: var.$primary;
 	-webkit-box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.2);
 	box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.1);
 }
 
-.questionContainer {
-	flex-direction: column;
-}
-
-.infoBox {
-	min-height: 50px;
-	padding: 18px 0 18px 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	-webkit-box-shadow: 5px 5px 15px -10px rgba(0, 0, 0, 0.33);
-	box-shadow: 5px 5px 15px -10px rgba(0, 0, 0, 0.33);
-	background-color: var.$offWhite;
-	border-radius: 10px;
-}
-
-.selectionButton {
+// Common styling for the box like elements
+.boxStyling {
 	min-height: 50px;
 	padding: 18px 5px 18px 5px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	-webkit-box-shadow: 5px 5px 15px -10px rgba(0, 0, 0, 0.33);
 	box-shadow: 5px 5px 15px -10px rgba(0, 0, 0, 0.33);
-
-	cursor: pointer;
-	background-color: var.$yellow;
-	border-radius: 100px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	transition: transform, filter 0.15s;
+	border-radius: 5px;
 }
-.selectionButton:hover,
-.selectionButton:focus,
-input[type="radio"]:checked ~ .selectionButton {
-	filter: brightness(0.8);
-	transform: scale(0.97);
+
+//
+.mainContainer {
+	background-color: var.$containerBG;
 }
 
 .choiceContainer {
@@ -62,9 +39,9 @@ input[type="radio"]:checked ~ .selectionButton {
 }
 
 .forScore {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
+	// align-items: flex-start;
+	flex-direction: row;
+	justify-content: space-between;
 	padding: 18px;
 }
 
@@ -79,7 +56,7 @@ footer {
 	bottom: 0;
 	right: 0%;
 	left: 0%;
-	background-color: var.$offWhite;
+	background-color: var.$bgColour;
 	height: 25px;
 }
 
@@ -98,8 +75,13 @@ footer {
 			margin-bottom: 0;
 		}
 	}
-	.infoBox,
+	.boxStyling,
 	.selectionButton {
 		padding: 5px 15px 5px 15px;
+	}
+
+	.forScore {
+		flex-direction: column;
+		gap: 10px;
 	}
 }

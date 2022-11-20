@@ -92,7 +92,8 @@ triviaApp.displayQuestion = () => {
 	// Adding text content to the h2
 	questionElement.innerHTML = triviaApp.questionArray[0][triviaApp.questionCounter].question;
 	// Appending the h2 object to the page of the html
-	document.querySelector(".questionContainer").append(questionElement);
+	// document.querySelector(".questionContainer").append(questionElement);
+	triviaApp.appendMain(questionElement);
 };
 
 // Function to display the choices
@@ -120,12 +121,13 @@ triviaApp.displayChoice = () => {
 		// Modify the class property of the pElement
 		pElement.classList = "choiceText";
 		// Modify the class property of the class list
-		liElement.classList = "choiceList selectionButton";
+		liElement.classList = "choiceList selectionButton boxStyling";
 		// Modify the id property of the liElement. Assigns a unique id based on the counter i
 		liElement.id = `choiceList${i}`;
 		// Appending the objects created above to the page
 		liElement.append(pElement);
-		document.querySelector(".choiceContainer").append(liElement);
+		// document.querySelector(".choiceContainer").append(liElement);
+		triviaApp.appendChoice(liElement);
 
 		// Attach event listener
 		document.querySelector(`#choiceList${i}`).addEventListener("click", function (event) {
@@ -134,9 +136,10 @@ triviaApp.displayChoice = () => {
 			// Create li Element to store paragraph element
 			const liEvaluation = document.createElement("li");
 			// Assign it a class to style
-			liEvaluation.classList = "choiceEvaluation choiceList selectionButton";
+			liEvaluation.classList = "choiceEvaluation choiceList selectionButton boxStyling";
 			// Append the li to the ul
-			document.querySelector(".choiceContainer").append(liEvaluation);
+			// document.querySelector(".choiceContainer").append(liEvaluation);
+			triviaApp.appendChoice(liEvaluation);
 			// Create a p Element to display the evaluatino
 			const pEvaluation = document.createElement("p");
 			// Assign it a class to style
@@ -193,14 +196,14 @@ triviaApp.scoreSubtract = () => {
 // Function to update the score and append it onto the page
 triviaApp.updateScore = () => {
 	// Clear the html element container
-	document.querySelector(".forScore").classList = "forScore infoBox";
+	document.querySelector(".forScore").classList = "forScore boxStyling";
 	triviaApp.clearScore();
 	const scoreElement = document.createElement("p");
 	const progressElement = document.createElement("p");
-	progressElement.classList = "scoreText";
-	scoreElement.classList = "scoreText";
-	progressElement.innerHTML = `Progress: ${triviaApp.questionCounter}/${triviaApp.questionArray[0].length}`;
-	scoreElement.innerHTML = `Score: ${triviaApp.score}`;
+	progressElement.classList = "scoreText tBlue";
+	scoreElement.classList = "scoreText tBlue";
+	progressElement.innerHTML = `PROGRESS: ${triviaApp.questionCounter}/${triviaApp.questionArray[0].length}`;
+	scoreElement.innerHTML = `SCORE: ${triviaApp.score}`;
 	document.querySelector(".forScore").append(scoreElement);
 	document.querySelector(".forScore").append(progressElement);
 };
@@ -208,7 +211,8 @@ triviaApp.updateScore = () => {
 // Function to display player results
 triviaApp.displayResults = () => {
 	const endMessage = document.createElement("h2");
-	document.querySelector(".questionContainer").append(endMessage);
+	// document.querySelector(".questionContainer").append(endMessage);
+	triviaApp.appendMain(endMessage);
 	if (triviaApp.score / triviaApp.questionArray[0].length >= 1 / 2) {
 		endMessage.innerText = `Nice job! You scored ${triviaApp.score} points.`;
 	} else {
@@ -222,9 +226,10 @@ triviaApp.displayResults = () => {
 triviaApp.goHome = () => {
 	const liElement = document.createElement("li");
 	liElement.classList = "homeButtonContainer";
-	document.querySelector(".choiceContainer").append(liElement);
+	// document.querySelector(".choiceContainer").append(liElement);
+	triviaApp.appendChoice(liElement);
 	const homeButton = document.createElement("a");
-	homeButton.classList = "choiceList selectionButton";
+	homeButton.classList = "choiceList selectionButton boxStyling";
 	liElement.append(homeButton);
 	homeButton.href = "./index.html";
 	homeButton.innerText = "Play again";
@@ -235,7 +240,8 @@ triviaApp.goHome = () => {
 triviaApp.submissionAsset = () => {
 	const scoreSubmissionForm = document.createElement("form");
 	scoreSubmissionForm.id = "scoreForm";
-	document.querySelector(".questionContainer").append(scoreSubmissionForm);
+	// document.querySelector(".questionContainer").append(scoreSubmissionForm);
+	triviaApp.appendMain(scoreSubmissionForm);
 
 	const submissionPrompt = document.createElement("label");
 	submissionPrompt.innerText = "Enter Initials to Submit Score";
@@ -252,7 +258,7 @@ triviaApp.submissionAsset = () => {
 	const submitElement = document.createElement("input");
 	submitElement.setAttribute("type", "submit");
 	submitElement.setAttribute("value", "Submit Score");
-	submitElement.classList = "selectionButton";
+	submitElement.classList = "selectionButton boxStyling";
 	scoreSubmissionForm.append(submitElement);
 
 	scoreSubmissionForm.addEventListener("submit", function (event) {
@@ -293,7 +299,8 @@ triviaApp.displayLeaderboard = () => {
 		tableRowElement.append(tableHeaderScore);
 		tableHeaderScore.innerText = "Score";
 		tableElement.append(tableRowElement);
-		document.querySelector(".questionContainer").append(tableElement);
+		// document.querySelector(".questionContainer").append(tableElement);
+		triviaApp.appendMain(tableElement);
 
 		for (let entry in leaderboard.scoreEntry) {
 			const tableUserRow = document.createElement("tr");
@@ -310,6 +317,16 @@ triviaApp.displayLeaderboard = () => {
 };
 
 //---END OF LEADERBOARD---//
+
+// Function to append elements to the .mainContainer
+triviaApp.appendMain = (elementToAppend) => {
+	document.querySelector(".mainContainer").append(elementToAppend);
+};
+
+// Function to append elements to the .choiceContainer
+triviaApp.appendChoice = (elementToAppend) => {
+	document.querySelector(".choiceContainer").append(elementToAppend);
+};
 
 // Counter to keep track of the number of itterations
 triviaApp.questionCounter = 0;
@@ -329,7 +346,7 @@ triviaApp.clearChoice = () => {
 
 // Clear questions
 triviaApp.clearQuestion = () => {
-	document.querySelector(".questionContainer").innerHTML = "";
+	document.querySelector(".mainContainer").innerHTML = "";
 };
 
 // Clear all
