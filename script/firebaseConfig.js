@@ -1,19 +1,17 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 import { getDatabase } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyBa_3SUH4GgTauY68tVZf-JUqc3neWTXNE",
-    authDomain: "projecttwoapi.firebaseapp.com",
-    databaseURL: "https://projecttwoapi-default-rtdb.firebaseio.com",
-    projectId: "projecttwoapi",
-    storageBucket: "projecttwoapi.appspot.com",
-    messagingSenderId: "769841972321",
-    appId: "1:769841972321:web:0b7209aa7c0f501a59d620",
+	apiKey: "AIzaSyBa_3SUH4GgTauY68tVZf-JUqc3neWTXNE",
+	authDomain: "projecttwoapi.firebaseapp.com",
+	databaseURL: "https://projecttwoapi-default-rtdb.firebaseio.com",
+	projectId: "projecttwoapi",
+	storageBucket: "projecttwoapi.appspot.com",
+	messagingSenderId: "769841972321",
+	appId: "1:769841972321:web:0b7209aa7c0f501a59d620",
 };
 
 // Initialize Firebase

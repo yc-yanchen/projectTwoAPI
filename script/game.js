@@ -63,9 +63,7 @@ async function getQuestion() {
 	const myObject = await fetch(triviaApp.url);
 	const myQuestion = await myObject.json();
 	triviaApp.questionArray.push(myQuestion);
-	console.log(triviaApp.questionArray);
-
-	// Call the displayQuestion function
+	// Call triviaApp.setupQuestion
 	triviaApp.setupQuestion();
 }
 
@@ -85,26 +83,29 @@ triviaApp.setupQuestion = () => {
 	}
 };
 
-// Function to display the questions inside the questionArray
+// Function to display the questions inside the triviaApp.questionArray
 triviaApp.displayQuestion = () => {
-	// Create an h2 object in the document
+	// Create an h2 object in the document to hold the question
 	const questionElement = document.createElement("h2");
 	questionElement.classList = "questionText";
-	// Adding text content to the h2
+	// Adding question to the h2
 	questionElement.innerHTML = triviaApp.questionArray[0][triviaApp.questionCounter].question;
-	// Appending the h2 object to the page of the html
+	// Appending the h2 object to the .mainContainer
 	triviaApp.appendMain(questionElement);
 };
 
 // Function to display the choices
 triviaApp.displayChoice = () => {
+	// Create an empty array. This array will hold both the correct and inccorect answers for the questions as they get pushed in. The array will then get shuffled.
 	triviaApp.choiceArray = [];
+	// Pushing the incorrect answer into the array by looping through them with the forEach method.
 	triviaApp.questionArray[0][triviaApp.questionCounter].incorrectAnswers.forEach((answer) => {
 		triviaApp.choiceArray.push(answer);
 	});
+	// Pushing the correct answer into the array
 	triviaApp.choiceArray.push(triviaApp.questionArray[0][triviaApp.questionCounter].correctAnswer);
 
-	// Shuffled the choice array
+	// Shuffle the choice array
 	triviaApp.fisherYates(triviaApp.choiceArray);
 
 	// For each item in the shuffled choice array:
@@ -125,6 +126,7 @@ triviaApp.displayChoice = () => {
 		liElement.id = `choiceList${i}`;
 		// Appending the objects created above to the page
 		liElement.append(pElement);
+		// Appending the choices to the .choiceContainer
 		triviaApp.appendChoice(liElement);
 
 		// Attach event listener
@@ -144,13 +146,16 @@ triviaApp.displayChoice = () => {
 			// Append the p to the li
 			liEvaluation.append(pEvaluation);
 
-			// Create a function which compares the textContent of the choice which the user clicked and comparing it to the correct answer
+			// Create a function which compares the textContent of the choice which the user clicked and compare it to the correct answer
 			if (event.target.textContent == triviaApp.questionArray[0][triviaApp.questionCounter].correctAnswer) {
-				// Runs function which updates the score
+				// Score will be added when the user selects the correct answer
 				triviaApp.scoreAddition();
+				// The application will let the user know to click on the button to continue
 				pEvaluation.innerText = `Correct! \n Click here to continue`;
 			} else {
+				// Score will be subtracted when the user selects the incorrect answer
 				triviaApp.scoreSubtract();
+				// THe application will let the user know to click on the button to continue. The correct answer will also be displayed
 				pEvaluation.innerText = `The correct answer is: \n ${triviaApp.questionArray[0][triviaApp.questionCounter].correctAnswer} \n Click here to continue`;
 			}
 			// Add an event listener to the new li element to run the function triviaApp.nextQuestion() (to load the next set of question and answers)
@@ -164,6 +169,7 @@ triviaApp.displayChoice = () => {
 	}
 };
 
+// Function to add score based on the difficulty. The function will check the difficulty which the async function used to fetch the questions, and add score depending on which difficulty was picked.
 triviaApp.scoreAddition = () => {
 	if (triviaApp.userDif.value == "easy") {
 		triviaApp.score = triviaApp.score + 100;
@@ -176,6 +182,7 @@ triviaApp.scoreAddition = () => {
 	}
 };
 
+// Similarly, the function which adds points, this one subtract points.
 triviaApp.scoreSubtract = () => {
 	if (triviaApp.userDif.value == "easy") {
 		triviaApp.score = triviaApp.score - 20;
@@ -188,91 +195,101 @@ triviaApp.scoreSubtract = () => {
 	}
 };
 
-// Function to update the score and append it onto the page
+// Function to update the score and append it onto the page after each question, and upon setup of the game.
 triviaApp.updateScore = () => {
-	// Clear the html element container
+	// Adding the class of boxStyling to the div to make it show up on the page
 	document.querySelector(".forScore").classList = "forScore boxStyling";
+	// Clear the currect text which shows the score and progress before appending the updated one.
 	triviaApp.clearScore();
+	// Create elements to hold the progress and the score
 	const scoreElement = document.createElement("p");
 	const progressElement = document.createElement("p");
+	// Adding classes for styling to those paragraph elements
 	progressElement.classList = "scoreText tBlue";
 	scoreElement.classList = "scoreText tBlue";
+	// Using template literal, the current player score and their progress is displayed.
 	progressElement.innerHTML = `PROGRESS: ${triviaApp.questionCounter + 1}/${triviaApp.questionArray[0].length}`;
 	scoreElement.innerHTML = `SCORE: ${triviaApp.score}`;
+	// Append those elements to the .forScore div
 	document.querySelector(".forScore").append(scoreElement);
 	document.querySelector(".forScore").append(progressElement);
 };
 
 // Function to display player results
 triviaApp.displayResults = () => {
+	// Create new element to hold the end message including the player score
 	const endMessage = document.createElement("p");
 	endMessage.classList = "formText";
+	//Append the element
 	triviaApp.appendMain(endMessage);
+	// A slightly different message is displayed depending on how the user scored.
 	if (triviaApp.score / triviaApp.questionArray[0].length >= 1 / 2) {
 		endMessage.innerText = `Nice job! You scored ${triviaApp.score} points.`;
 	} else {
 		endMessage.innerText = `You scored ${triviaApp.score} points.`;
 	}
+	// Calls the function triviaApp.submissionAsset()
 	triviaApp.submissionAsset();
-};
-
-// Function to display a button at the end of the leaderboard page to bring the user back to the start page
-// Note that only the center text in the li button will lead the click to the home page and that the rest of the button does not do anything
-triviaApp.goHome = () => {
-	const liElement = document.createElement("li");
-	triviaApp.appendMain(liElement);
-	const homeButton = document.createElement("a");
-	homeButton.classList = "menuButton choiceList selectionButton boxStyling choiceText";
-	liElement.append(homeButton);
-	homeButton.href = "./index.html";
-	homeButton.innerText = "Play again";
 };
 
 //---SCORE SUBMISSION---///
 
+// Function which is responsible to collect user initial and user score to send to Firebase
 triviaApp.submissionAsset = () => {
+	// Creating the form element which will hold the rest of the form content
 	const scoreSubmissionForm = document.createElement("form");
 	scoreSubmissionForm.id = "scoreForm";
 	triviaApp.appendMain(scoreSubmissionForm);
 
+	// Create a form label
 	const submissionPrompt = document.createElement("label");
 	submissionPrompt.innerText = "Enter Initials to Submit Score";
 	submissionPrompt.classList = "formText";
 	submissionPrompt.setAttribute("for", "userInitial");
 	scoreSubmissionForm.append(submissionPrompt);
 
+	// Create a text input for the initials
 	const initialElement = document.createElement("input");
 	initialElement.setAttribute("type", "text");
 	initialElement.placeholder = "Enter Initials";
-
 	initialElement.id = "userInitial";
+	// Prevent player from entering more than three characters into the intials form
 	initialElement.maxLength = 3;
 	scoreSubmissionForm.append(initialElement);
 
+	// Create an input button to submit the form
 	const submitElement = document.createElement("input");
 	submitElement.setAttribute("type", "submit");
 	submitElement.setAttribute("value", "Submit Score");
 	submitElement.classList = "selectionButton boxStyling";
 	scoreSubmissionForm.append(submitElement);
 
+	// Create an event listener which listens for a submit of the form.
 	scoreSubmissionForm.addEventListener("submit", function (event) {
+		// Prevent the page from refreshing
 		event.preventDefault();
 
+		// Collects the necessary data for submission
 		const submissionContent = {
+			// Forcing all characters the user inputed to uppercase
 			initial: initialElement.value.toUpperCase(),
+			// Collect the current player score
 			score: triviaApp.score,
 		};
 
+		// Only push the score when the user has entered text into the input field
 		if (initialElement.value) {
 			push(childNodeRef, submissionContent);
 			triviaApp.clearAll();
 			triviaApp.questionCounter = 0;
 			triviaApp.score = 0;
 			triviaApp.questionArray = [];
+			// An alert will show if the user does not input their initial before submitting the form
 		} else {
 			alert("Please enter initials before submitting");
 		}
 
+		// Once the score is submitted, call triviaApp.displayLeaderboard()
 		triviaApp.displayLeaderboard();
 	});
 };
@@ -281,9 +298,13 @@ triviaApp.submissionAsset = () => {
 
 //---LEADERBOARD---//
 
+// Function to display the leaderboard
 triviaApp.displayLeaderboard = () => {
+	// Requests for a snapshot of the current database on Firebase
 	get(dbRef).then((snapshot) => {
+		// Parse the data into the leaderboard object
 		const leaderboard = snapshot.val();
+		// Create the necessary components to display the leaderboard in a table. Two columns, one for the initials, and one for the scores.
 		const tableElement = document.createElement("table");
 		const tableRowElement = document.createElement("tr");
 		const tableHeaderInitial = document.createElement("th");
@@ -294,27 +315,44 @@ triviaApp.displayLeaderboard = () => {
 		tableHeaderScore.innerText = "Score";
 		tableElement.append(tableRowElement);
 
+		// Create an element to show "Leaderboard" above the table
 		const leaderboardTitle = document.createElement("h2");
 		leaderboardTitle.classList = "homeHeading tYellow";
 		leaderboardTitle.innerText = "Leaderboard";
+		// Append the table and the title to .mainContainer
 		triviaApp.appendMain(leaderboardTitle);
 		triviaApp.appendMain(tableElement);
 
+		// Using a for in function, looped through the leaderboard object to display the initial and scores
 		for (let entry in leaderboard.scoreEntry) {
+			// Create new table row, and new table data to store the information
 			const tableUserRow = document.createElement("tr");
 			const tableInitial = document.createElement("td");
 			const tableScore = document.createElement("td");
+			// Add the data to the elements
 			tableInitial.textContent = leaderboard.scoreEntry[entry].initial;
 			tableScore.textContent = leaderboard.scoreEntry[entry].score;
+			// Append the elements to the previously created table
 			tableUserRow.append(tableInitial);
 			tableUserRow.append(tableScore);
+			// Append the new row to the previously created table
 			document.querySelector("table").append(tableUserRow);
 		}
+		// Call the function triviaApp.goHome()
 		triviaApp.goHome();
 	});
 };
 
 //---END OF LEADERBOARD---//
+
+// Function to display a button at the end of the leaderboard page to bring the user back to the start page
+triviaApp.goHome = () => {
+	const homeButton = document.createElement("a");
+	homeButton.classList = "menuButton choiceList selectionButton boxStyling choiceText";
+	triviaApp.appendMain(homeButton);
+	homeButton.href = "./index.html";
+	homeButton.innerText = "Play again";
+};
 
 // Function to append elements to the .mainContainer
 triviaApp.appendMain = (elementToAppend) => {
