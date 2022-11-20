@@ -36,22 +36,26 @@ header {
 	}
 }
 
-// Styling for the dynamicallu generated elements which tell the user their score
+// Styling for the dynamically generated elements which tell the user their score
 .forScore {
 	flex-direction: row;
 	justify-content: space-between;
 	padding: 18px;
 }
 
+// Styling for the table
 table {
 	margin: 0 0 36px 0;
 }
 
+// Styling for the table header
 th {
 	width: 100px;
 	height: 50px;
 }
 
+// Styling for the footer
+// right 0% and left 0% to center the absolutely positioned element
 footer {
 	position: absolute;
 	bottom: 0;
@@ -63,25 +67,29 @@ footer {
 
 // Media queries styling
 @media (max-width: 475px) {
+	// Changing the flex direction of the .radioContainer
 	.radioContainer {
-		display: flex;
 		flex-direction: column;
 		align-items: center;
 	}
 
+	// Changing the flex direct of the .choiceContainer
 	.choiceContainer {
 		flex-direction: column;
 		gap: 18px;
+		// Expand the width of each chocie to 100% when displayed in a column
 		.choiceList {
 			width: 100%;
 			margin-bottom: 0;
 		}
 	}
+	// General media query styling for the .boxStyling and .selectionButton
 	.boxStyling,
 	.selectionButton {
 		padding: 5px 15px 5px 15px;
 	}
 
+	// Change the flex direction to column
 	.forScore {
 		flex-direction: column;
 		gap: 10px;
