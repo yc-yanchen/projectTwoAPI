@@ -92,14 +92,12 @@ triviaApp.displayQuestion = () => {
 	// Adding text content to the h2
 	questionElement.innerHTML = triviaApp.questionArray[0][triviaApp.questionCounter].question;
 	// Appending the h2 object to the page of the html
-	// document.querySelector(".questionContainer").append(questionElement);
 	triviaApp.appendMain(questionElement);
 };
 
 // Function to display the choices
 triviaApp.displayChoice = () => {
 	triviaApp.choiceArray = [];
-	// console.log(triviaApp.questionArray[0][0].incorrectAnswers);
 	triviaApp.questionArray[0][triviaApp.questionCounter].incorrectAnswers.forEach((answer) => {
 		triviaApp.choiceArray.push(answer);
 	});
@@ -126,7 +124,6 @@ triviaApp.displayChoice = () => {
 		liElement.id = `choiceList${i}`;
 		// Appending the objects created above to the page
 		liElement.append(pElement);
-		// document.querySelector(".choiceContainer").append(liElement);
 		triviaApp.appendChoice(liElement);
 
 		// Attach event listener
@@ -138,7 +135,6 @@ triviaApp.displayChoice = () => {
 			// Assign it a class to style
 			liEvaluation.classList = "choiceEvaluation choiceList selectionButton boxStyling";
 			// Append the li to the ul
-			// document.querySelector(".choiceContainer").append(liEvaluation);
 			triviaApp.appendChoice(liEvaluation);
 			// Create a p Element to display the evaluatino
 			const pEvaluation = document.createElement("p");
@@ -180,16 +176,14 @@ triviaApp.scoreAddition = () => {
 };
 
 triviaApp.scoreSubtract = () => {
-	if (!triviaApp.score == 0) {
-		if (triviaApp.userDif.value == "easy") {
-			triviaApp.score = triviaApp.score - 20;
-		}
-		if (triviaApp.userDif.value == "medium") {
-			triviaApp.score = triviaApp.score - 50;
-		}
-		if (triviaApp.userDif.value == "hard") {
-			triviaApp.score = triviaApp.score - 90;
-		}
+	if (triviaApp.userDif.value == "easy") {
+		triviaApp.score = triviaApp.score - 20;
+	}
+	if (triviaApp.userDif.value == "medium") {
+		triviaApp.score = triviaApp.score - 50;
+	}
+	if (triviaApp.userDif.value == "hard") {
+		triviaApp.score = triviaApp.score - 90;
 	}
 };
 
@@ -212,7 +206,6 @@ triviaApp.updateScore = () => {
 triviaApp.displayResults = () => {
 	const endMessage = document.createElement("p");
 	endMessage.classList = "formText";
-	// document.querySelector(".questionContainer").append(endMessage);
 	triviaApp.appendMain(endMessage);
 	if (triviaApp.score / triviaApp.questionArray[0].length >= 1 / 2) {
 		endMessage.innerText = `Nice job! You scored ${triviaApp.score} points.`;
@@ -226,8 +219,6 @@ triviaApp.displayResults = () => {
 // Note that only the center text in the li button will lead the click to the home page and that the rest of the button does not do anything
 triviaApp.goHome = () => {
 	const liElement = document.createElement("li");
-	// liElement.classList = "menuButton";
-	// document.querySelector(".choiceContainer").append(liElement);
 	triviaApp.appendMain(liElement);
 	const homeButton = document.createElement("a");
 	homeButton.classList = "menuButton choiceList selectionButton boxStyling choiceText";
@@ -241,7 +232,6 @@ triviaApp.goHome = () => {
 triviaApp.submissionAsset = () => {
 	const scoreSubmissionForm = document.createElement("form");
 	scoreSubmissionForm.id = "scoreForm";
-	// document.querySelector(".questionContainer").append(scoreSubmissionForm);
 	triviaApp.appendMain(scoreSubmissionForm);
 
 	const submissionPrompt = document.createElement("label");
