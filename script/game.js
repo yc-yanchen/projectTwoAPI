@@ -48,10 +48,10 @@ triviaApp.formElement.addEventListener("submit", function (event) {
 
 // Function to create 1 to 50 option choices for user to select
 triviaApp.setupAmount = () => {
-	for (let i = 0; i < 50; i++) {
+	for (let i = 1; i <= 50; i++) {
 		const optionElement = document.createElement("option");
-		optionElement.value = i + 1;
-		optionElement.innerText = i + 1;
+		optionElement.value = i;
+		optionElement.innerText = i;
 		document.querySelector("select").append(optionElement);
 	}
 };
