@@ -298,6 +298,7 @@ h1 {
   font-style: italic;
   letter-spacing: 3px;
   text-transform: uppercase;
+  display: inline-block;
 }
 
 .tBlue {
@@ -308,6 +309,11 @@ h1 {
 .tRed {
   color: rgb(255, 61, 148);
   text-shadow: 0px 0px 10px rgba(253, 187, 255, 0.8);
+}
+
+.tYellow {
+  color: rgb(246, 232, 88);
+  text-shadow: 0px 0px 10px rgba(229, 217, 88, 0.8);
 }
 
 .homeHeading {
@@ -336,10 +342,12 @@ h1 {
 
 th {
   font-size: 2.4rem;
+  letter-spacing: 2.2px;
 }
 
 td {
   text-align: center;
+  letter-spacing: 2px;
 }
 
 .choiceText,
@@ -350,6 +358,8 @@ input {
   color: rgb(31, 31, 31);
 }
 
+th,
+td,
 .formText {
   color: rgb(245, 245, 245);
 }
@@ -406,8 +416,6 @@ html {
 }
 header {
   background-color: rgb(72, 49, 212);
-  -webkit-box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.1);
 }
 
 .boxStyling {
@@ -426,13 +434,11 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-shadow: 5px 5px 15px -10px rgba(0, 0, 0, 0.33);
-  box-shadow: 5px 5px 15px -10px rgba(0, 0, 0, 0.33);
   border-radius: 5px;
 }
 
 .mainContainer {
-  background-color: rgb(45, 49, 111);
+  background-color: rgb(40, 37, 52);
 }
 
 .choiceContainer {
@@ -462,14 +468,13 @@ header {
   padding: 18px;
 }
 
-.homeButtonContainer {
-  width: 70%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+table {
+  margin: 0 0 36px 0;
+}
+
+th {
+  width: 100px;
+  height: 50px;
 }
 
 footer {
@@ -477,7 +482,7 @@ footer {
   bottom: 0;
   right: 0%;
   left: 0%;
-  background-color: rgb(19, 20, 61);
+  background-color: rgb(40, 37, 52);
   height: 25px;
 }
 
@@ -587,7 +592,7 @@ fieldset input[type=radio] {
 .selectionButton:focus {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
-  background-color: rgb(253, 255, 109);
+  background-color: rgb(246, 232, 88);
   -webkit-box-shadow: 0px 0px 30px 2px rgba(255, 217, 0, 0.33), inset 0px 0px 30px 15px rgba(255, 217, 0, 0.12);
   box-shadow: 0px 0px 30px 2px rgba(255, 217, 0, 0.33), inset 0px 0px 30px 15px rgba(255, 217, 0, 0.12);
 }
@@ -617,13 +622,9 @@ input[type=submit] {
   margin: 24px 0 40px 0;
   font-size: 2.4rem;
   text-align: center;
-}
-
-table {
-  margin: 0 auto;
-}
-
-th {
-  width: 100px;
-  height: 50px;
+  border: none;
+  border-bottom: 2px solid rgb(255, 61, 148);
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(245, 245, 245);
+  text-transform: uppercase;
 }

@@ -202,7 +202,7 @@ triviaApp.updateScore = () => {
 	const progressElement = document.createElement("p");
 	progressElement.classList = "scoreText tBlue";
 	scoreElement.classList = "scoreText tBlue";
-	progressElement.innerHTML = `PROGRESS: ${triviaApp.questionCounter}/${triviaApp.questionArray[0].length}`;
+	progressElement.innerHTML = `PROGRESS: ${triviaApp.questionCounter + 1}/${triviaApp.questionArray[0].length}`;
 	scoreElement.innerHTML = `SCORE: ${triviaApp.score}`;
 	document.querySelector(".forScore").append(scoreElement);
 	document.querySelector(".forScore").append(progressElement);
@@ -210,7 +210,8 @@ triviaApp.updateScore = () => {
 
 // Function to display player results
 triviaApp.displayResults = () => {
-	const endMessage = document.createElement("h2");
+	const endMessage = document.createElement("p");
+	endMessage.classList = "formText";
 	// document.querySelector(".questionContainer").append(endMessage);
 	triviaApp.appendMain(endMessage);
 	if (triviaApp.score / triviaApp.questionArray[0].length >= 1 / 2) {
@@ -225,11 +226,11 @@ triviaApp.displayResults = () => {
 // Note that only the center text in the li button will lead the click to the home page and that the rest of the button does not do anything
 triviaApp.goHome = () => {
 	const liElement = document.createElement("li");
-	liElement.classList = "homeButtonContainer";
+	// liElement.classList = "menuButton";
 	// document.querySelector(".choiceContainer").append(liElement);
-	triviaApp.appendChoice(liElement);
+	triviaApp.appendMain(liElement);
 	const homeButton = document.createElement("a");
-	homeButton.classList = "choiceList selectionButton boxStyling";
+	homeButton.classList = "menuButton choiceList selectionButton boxStyling choiceText";
 	liElement.append(homeButton);
 	homeButton.href = "./index.html";
 	homeButton.innerText = "Play again";
@@ -251,6 +252,8 @@ triviaApp.submissionAsset = () => {
 
 	const initialElement = document.createElement("input");
 	initialElement.setAttribute("type", "text");
+	initialElement.placeholder = "Enter Initials";
+
 	initialElement.id = "userInitial";
 	initialElement.maxLength = 3;
 	scoreSubmissionForm.append(initialElement);
@@ -265,7 +268,7 @@ triviaApp.submissionAsset = () => {
 		event.preventDefault();
 
 		const submissionContent = {
-			initial: initialElement.value,
+			initial: initialElement.value.toUpperCase(),
 			score: triviaApp.score,
 		};
 
@@ -299,7 +302,11 @@ triviaApp.displayLeaderboard = () => {
 		tableRowElement.append(tableHeaderScore);
 		tableHeaderScore.innerText = "Score";
 		tableElement.append(tableRowElement);
-		// document.querySelector(".questionContainer").append(tableElement);
+
+		const leaderboardTitle = document.createElement("h2");
+		leaderboardTitle.classList = "homeHeading tYellow";
+		leaderboardTitle.innerText = "Leaderboard";
+		triviaApp.appendMain(leaderboardTitle);
 		triviaApp.appendMain(tableElement);
 
 		for (let entry in leaderboard.scoreEntry) {
