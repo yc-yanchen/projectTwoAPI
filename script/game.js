@@ -1,5 +1,7 @@
+// Import firebase database
 import database from "./firebaseConfig.js";
 
+// Import firebase functions
 import { ref, push, get } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
 
 // Firebase referencing the database location
@@ -347,9 +349,12 @@ triviaApp.displayLeaderboard = () => {
 
 // Function to display a button at the end of the leaderboard page to bring the user back to the start page
 triviaApp.goHome = () => {
+	//  Create anchor element to redirect user to the start
 	const homeButton = document.createElement("a");
 	homeButton.classList = "menuButton choiceList selectionButton boxStyling choiceText";
+	// Append the anchor to the page below the scoreboard
 	triviaApp.appendMain(homeButton);
+	// Link to the index.html
 	homeButton.href = "./index.html";
 	homeButton.innerText = "Play again";
 };
