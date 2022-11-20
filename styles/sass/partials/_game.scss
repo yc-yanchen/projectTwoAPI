@@ -36,7 +36,7 @@ header {
 	}
 }
 
-//
+// Styling for the dynamicallu generated elements which tell the user their score
 .forScore {
 	flex-direction: row;
 	justify-content: space-between;
@@ -61,6 +61,7 @@ footer {
 	height: 25px;
 }
 
+// Media queries styling
 @media (max-width: 475px) {
 	.radioContainer {
 		display: flex;
