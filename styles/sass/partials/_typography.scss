@@ -3,10 +3,6 @@
 // Typography general styling
 h1,
 h2,
-h3,
-h4,
-h5,
-h6,
 p,
 a,
 a:visited,
@@ -28,28 +24,29 @@ a:visited {
 	text-decoration: none;
 }
 
+// Logo typography
 h1 {
 	font-size: 4.8rem;
 	font-family: "Nova Square", cursive;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 	font-style: italic;
 	letter-spacing: 3px;
 	text-transform: uppercase;
 	display: inline-block;
 }
+
+// Styling to add a blue neon glow to text
 .tBlue {
 	color: var.$highlightBlue;
 	text-shadow: 0px 0px 10px rgba(148, 247, 255, 0.9);
 }
+
+// Styling to add a pink/red neon glow to text
 .tRed {
 	color: var.$highlightRed;
 	text-shadow: 0px 0px 10px rgba(253, 187, 255, 0.8);
 }
-.tYellow {
-	color: var.$highlightYellow;
-	text-shadow: 0px 0px 10px rgba(229, 217, 88, 0.8);
-}
 
+// General styling for heading. Give a white outer glow.
 .homeHeading {
 	font-size: 4rem;
 	text-align: center;
@@ -64,6 +61,7 @@ h1 {
 	color: var.$offWhite;
 }
 
+// Typography for text inside button and button like elements
 .choiceText {
 	text-align: center;
 	color: var.$black;
@@ -76,16 +74,19 @@ h1 {
 	font-family: "Orbitron", sans-serif;
 }
 
+// Typography for table heading
 th {
 	font-size: 2.4rem;
 	letter-spacing: 2.2px;
 }
 
+// Typography for table data
 td {
 	text-align: center;
 	letter-spacing: 2px;
 }
 
+// Specifying text colour
 .choiceText,
 label,
 option,
@@ -94,6 +95,7 @@ input {
 	color: var.$black;
 }
 
+// Specifying text colour
 th,
 td,
 .formText {
@@ -101,7 +103,6 @@ td,
 }
 
 // Footer typography styling
-
 footer {
 	p {
 		text-align: center;
@@ -109,6 +110,7 @@ footer {
 	}
 }
 
+// Media query typography
 @media (max-width: 475px) {
 	h1 {
 		font-size: 4.4rem;
